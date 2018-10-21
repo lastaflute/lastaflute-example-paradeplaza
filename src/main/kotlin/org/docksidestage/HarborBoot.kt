@@ -13,20 +13,18 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage;
+package org.docksidestage
 
-import org.dbflute.jetty.JettyBoot;
+import org.dbflute.jetty.JettyBoot
 
 /**
  * @author jflute
  */
-public class HarborBoot { // #change_it_first
 
-    public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar harbor.war
-        new JettyBoot(8090, "/harbor").asDevelopment(isDevelopment()).bootAwait();
-    }
+fun isDevelopment(): Boolean = System.getProperty("lasta.env") == null
 
-    private static boolean isDevelopment() {
-        return System.getProperty("lasta.env") == null;
-    }
+fun main(args: Array<String>) {
+    // e.g. java -Dlasta.env=production -jar harbor.war
+    JettyBoot(8090, "/harbor").asDevelopment(isDevelopment()).bootAwait()
 }
+
