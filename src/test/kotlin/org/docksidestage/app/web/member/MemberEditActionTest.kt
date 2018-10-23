@@ -15,7 +15,7 @@ import javax.annotation.Resource
 class MemberEditActionTest : UnitHarborTestCase() {
 
     @Resource
-    private val memberBhv: MemberBhv? = null
+    private lateinit var memberBhv: MemberBhv
 
     // ===================================================================================
     //                                                                             index()

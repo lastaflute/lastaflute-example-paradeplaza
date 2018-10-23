@@ -12,9 +12,9 @@ import javax.annotation.Resource
 class CipherSetupTest : UnitHarborTestCase() {
 
     @Resource
-    private val primaryCipher: PrimaryCipher? = null
+    private lateinit var primaryCipher: PrimaryCipher
     @Resource
-    private val cookieCipher: CookieCipher? = null
+    private lateinit var cookieCipher: CookieCipher
 
     @Throws(Exception::class)
     fun test_primary() {

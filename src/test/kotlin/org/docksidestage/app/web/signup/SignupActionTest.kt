@@ -15,9 +15,9 @@ import javax.annotation.Resource
 class SignupActionTest : UnitHarborTestCase() {
 
     @Resource
-    private val memberBhv: MemberBhv? = null
+    private lateinit var memberBhv: MemberBhv
     @Resource
-    private val loginAssist: HarborLoginAssist? = null
+    private lateinit var loginAssist: HarborLoginAssist
 
     fun test_index_success() {
         // ## Arrange ##

@@ -45,7 +45,7 @@ abstract class UnitHarborTestCase : WebContainerTestCase() {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private val loginAssist: HarborLoginAssist? = null
+    private lateinit var loginAssist: HarborLoginAssist
 
     protected// always exists in database as test data
     val mockLoginUserId: Int

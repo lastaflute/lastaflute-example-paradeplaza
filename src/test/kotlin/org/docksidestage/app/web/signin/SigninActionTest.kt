@@ -32,11 +32,11 @@ import javax.annotation.Resource
 class SigninActionTest : UnitHarborTestCase() {
 
     @Resource
-    private val timeManager: TimeManager? = null
+    private lateinit var timeManager: TimeManager
     @Resource
-    private val memberLoginBhv: MemberLoginBhv? = null
+    private lateinit var memberLoginBhv: MemberLoginBhv
     @Resource
-    private val loginAssist: HarborLoginAssist? = null
+    private lateinit var loginAssist: HarborLoginAssist
 
     // ===================================================================================
     //                                                                               Basic

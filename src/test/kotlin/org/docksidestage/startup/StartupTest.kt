@@ -28,7 +28,7 @@ import javax.annotation.Resource
 class StartupTest : UnitHarborTestCase() {
 
     @Resource
-    private val startupLogic: StartupLogic? = null
+    private lateinit var startupLogic: StartupLogic
 
     @Throws(Exception::class)
     fun test_startup_actually() {
