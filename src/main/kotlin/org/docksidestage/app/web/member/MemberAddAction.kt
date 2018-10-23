@@ -69,8 +69,8 @@ class MemberAddAction : HarborBaseAction() {
         member.birthdate = form.birthdate
         member.memberStatusCodeAsMemberStatus = form.memberStatus
         if (member.isMemberStatusCodeFormalized) {
-            member.formalizedDatetime = timeManager!!.currentDateTime()
+            member.formalizedDatetime = timeManager.currentDateTime()
         }
-        memberBhv!!.insert(member)
+        memberBhv.insert(member)
     }
 }

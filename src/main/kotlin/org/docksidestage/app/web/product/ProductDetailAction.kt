@@ -50,7 +50,7 @@ class ProductDetailAction : HarborBaseAction() {
     //                                                                              Select
     //                                                                              ======
     private fun selectProduct(productId: Int): Product {
-        return productBhv!!.selectEntity { cb ->
+        return productBhv.selectEntity { cb ->
             cb.setupSelect_ProductCategory()
             cb.query().setProductId_Equal(productId)
         }.get()

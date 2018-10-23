@@ -53,7 +53,7 @@ class MypageAction : HarborBaseAction() {
     //                                                                              Select
     //                                                                              ======
     private fun selectRecentProductList(): ListResultBean<Product> {
-        return productBhv!!.selectList { cb ->
+        return productBhv.selectList { cb ->
             cb.specify().derivedPurchase().max({ purchaseCB -> purchaseCB.specify().columnPurchaseDatetime() }, Product.ALIAS_latestPurchaseDate)
             cb.query().existsPurchase { purchaseCB -> purchaseCB.query().setMemberId_Equal(userBean.get().memberId) }
             cb.query().addSpecifiedDerivedOrderBy_Desc(Product.ALIAS_latestPurchaseDate)
@@ -63,7 +63,7 @@ class MypageAction : HarborBaseAction() {
     }
 
     private fun selectHighPriceProductList(): ListResultBean<Product> {
-        return productBhv!!.selectList { cb ->
+        return productBhv.selectList { cb ->
             cb.query().existsPurchase { purchaseCB -> purchaseCB.query().setMemberId_Equal(userBean.get().memberId) }
             cb.query().addOrderBy_RegularPrice_Desc()
             cb.fetchFirst(3)

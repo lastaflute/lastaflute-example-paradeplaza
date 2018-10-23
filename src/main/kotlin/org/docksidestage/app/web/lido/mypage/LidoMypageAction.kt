@@ -37,7 +37,7 @@ class LidoMypageAction : HarborBaseAction() {
     @AllowAnyoneAccess // #for_now s.tadokoro Remove this when JSON Login feature is implemented.
     @Execute
     fun index(): JsonResponse<List<MypageProductResult>> {
-        val memberList = productBhv!!.selectList { cb ->
+        val memberList = productBhv.selectList { cb ->
             cb.query().addOrderBy_RegularPrice_Desc()
             cb.fetchFirst(3)
         }

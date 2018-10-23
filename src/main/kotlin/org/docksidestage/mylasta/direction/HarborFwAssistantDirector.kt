@@ -75,7 +75,7 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     //                                                                              ======
     override fun prepareCoreDirection(direction: FwCoreDirection) {
         // this configuration is on harbor_env.properties because this is true only when development
-        direction.directDevelopmentHere(config!!.isDevelopmentHere)
+        direction.directDevelopmentHere(config.isDevelopmentHere)
 
         // titles of the application for logging are from configurations
         direction.directLoggingTitle(config.domainTitle, config.environmentTitle)
@@ -162,7 +162,7 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     }
 
     protected fun createHtmlRenderingProvider(): HtmlRenderingProvider {
-        return ThymeleafRenderingProvider().asDevelopment(config!!.isDevelopmentHere)
+        return ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere)
     }
 
     protected fun createMultipartResourceProvider(): MultipartResourceProvider {

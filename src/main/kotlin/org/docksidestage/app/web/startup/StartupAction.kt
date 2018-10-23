@@ -41,7 +41,7 @@ class StartupAction : HarborBaseAction() {
         validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Startup_StartupHtml) })
 
         val projectDir = projectDir
-        startupLogic!!.fromHarbor(projectDir, form.domain!!, form.serviceName!!)
+        startupLogic.fromHarbor(projectDir, form.domain!!, form.serviceName!!)
 
         val bean = mappingToBean(form, projectDir)
         return asHtml(HarborHtmlPath.path_Startup_StartupHtml).renderWith { data -> data.register("bean", bean) }

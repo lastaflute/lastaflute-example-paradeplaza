@@ -59,7 +59,7 @@ class LidoProductListAction : HarborBaseAction() {
         val page = selectProductPage(pageNumber.orElse(1), body)
         val items = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
 
-        val result = pagingAssist!!.createPagingResult(page, items)
+        val result = pagingAssist.createPagingResult(page, items)
         return asJson(result)
     }
 
@@ -68,7 +68,7 @@ class LidoProductListAction : HarborBaseAction() {
     //                                                                              ======
     private fun selectProductPage(pageNumber: Int, body: ProductSearchBody): PagingResultBean<Product> {
         verifyOrClientError("The pageNumber should be positive number: $pageNumber", pageNumber > 0)
-        return productBhv!!.selectPage { cb ->
+        return productBhv.selectPage { cb ->
             cb.setupSelect_ProductStatus()
             cb.setupSelect_ProductCategory()
             cb.specify().derivedPurchase().count({ purchaseCB -> purchaseCB.specify().columnPurchaseId() }, Product.ALIAS_purchaseCount)

@@ -53,12 +53,12 @@ class SigninAction : HarborBaseAction() {
             form.clearSecurityInfo()
             asHtml(HarborHtmlPath.path_Signin_SigninHtml)
         })
-        return loginAssist!!.loginRedirect(createCredential(form), { op -> op.rememberMe(form.rememberMe) }, { redirect(MypageAction::class.java) })
+        return loginAssist.loginRedirect(createCredential(form), { op -> op.rememberMe(form.rememberMe) }, { redirect(MypageAction::class.java) })
     }
 
     private fun moreValidate(form: SigninForm, messages: HarborMessages) {
         if (LaStringUtil.isNotEmpty(form.account) && LaStringUtil.isNotEmpty(form.password)) {
-            if (!loginAssist!!.checkUserLoginable(createCredential(form))) {
+            if (!loginAssist.checkUserLoginable(createCredential(form))) {
                 messages.addErrorsLoginFailure("account")
             }
         }

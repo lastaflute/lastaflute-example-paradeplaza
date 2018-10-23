@@ -78,13 +78,13 @@ class LidoAuthAction : HarborBaseAction() {
     @AllowAnyoneAccess
     fun signin(body: SigninBody): JsonResponse<Void> {
         validateApi(body) { messages -> }
-        loginAssist!!.login(UserPasswordCredential(body.account!!, body.password!!)) { op -> }
+        loginAssist.login(UserPasswordCredential(body.account!!, body.password!!)) { op -> }
         return JsonResponse.asEmptyBody()
     }
 
     @Execute
     fun signout(): JsonResponse<Void> {
-        loginAssist!!.logout()
+        loginAssist.logout()
         return JsonResponse.asEmptyBody()
     }
 
@@ -95,7 +95,7 @@ class LidoAuthAction : HarborBaseAction() {
     fun signup(body: SignupBody): JsonResponse<Void> {
         validateApi(body) { messages -> moreValidate(body, messages) }
         val memberId = newMember(body)
-        loginAssist!!.identityLogin(memberId) { op -> } // no remember-me here
+        loginAssist.identityLogin(memberId) { op -> } // no remember-me here
 
         val signupToken = saveSignupToken()
         sendSignupMail(body, signupToken)
@@ -104,7 +104,7 @@ class LidoAuthAction : HarborBaseAction() {
 
     private fun moreValidate(body: SignupBody, messages: HarborMessages) {
         if (LaStringUtil.isNotEmpty(body.memberAccount)) {
-            val count = memberBhv!!.selectCount { cb -> cb.query().setMemberAccount_Equal(body.memberAccount) }
+            val count = memberBhv.selectCount { cb -> cb.query().setMemberAccount_Equal(body.memberAccount) }
             if (count > 0) {
                 messages.addErrorsSignupAccountAlreadyExists("memberAccount")
             }
@@ -112,14 +112,14 @@ class LidoAuthAction : HarborBaseAction() {
     }
 
     private fun saveSignupToken(): String {
-        val token = primaryCipher!!.encrypt(Random().nextInt().toString()) // #simple_for_example
-        sessionManager!!.setAttribute(SIGNUP_TOKEN_KEY, token)
+        val token = primaryCipher.encrypt(Random().nextInt().toString()) // #simple_for_example
+        sessionManager.setAttribute(SIGNUP_TOKEN_KEY, token)
         return token
     }
 
     private fun sendSignupMail(body: SignupBody, signupToken: String) {
-        WelcomeMemberPostcard.droppedInto(postbox!!) { postcard ->
-            postcard.setFrom(config!!.mailAddressSupport, "Harbor Support") // #simple_for_example
+        WelcomeMemberPostcard.droppedInto(postbox) { postcard ->
+            postcard.setFrom(config.mailAddressSupport, "Harbor Support") // #simple_for_example
             postcard.addTo(body.memberAccount!! + "@docksidestage.org") // #simple_for_example
             postcard.setDomain(config.serverDomain)
             postcard.setMemberName(body.memberName)
@@ -136,9 +136,9 @@ class LidoAuthAction : HarborBaseAction() {
     }
 
     private fun verifySignupTokenMatched(account: String, token: String) {
-        val saved = sessionManager!!.getAttribute(SIGNUP_TOKEN_KEY, String::class.java).orElseTranslatingThrow<Throwable, RuntimeException> { cause -> responseManager!!.new404("Not found the signupToken in session: $account") { op -> op.cause(cause) } }
+        val saved = sessionManager.getAttribute(SIGNUP_TOKEN_KEY, String::class.java).orElseTranslatingThrow<Throwable, RuntimeException> { cause -> responseManager.new404("Not found the signupToken in session: $account") { op -> op.cause(cause) } }
         if (saved != token) {
-            throw responseManager!!.new404("Unmatched signupToken in session: saved=$saved, requested=$token")
+            throw responseManager.new404("Unmatched signupToken in session: saved=$saved, requested=$token")
         }
     }
 
@@ -150,21 +150,21 @@ class LidoAuthAction : HarborBaseAction() {
         member.memberAccount = body.memberAccount
         member.memberName = body.memberName
         member.setMemberStatusCode_Provisional()
-        memberBhv!!.insert(member) // #simple_for_example same-name concurrent access as application exception
+        memberBhv.insert(member) // #simple_for_example same-name concurrent access as application exception
 
         val security = MemberSecurity()
         security.memberId = member.memberId
-        security.loginPassword = loginAssist!!.encryptPassword(body.password)
+        security.loginPassword = loginAssist.encryptPassword(body.password)
         security.reminderQuestion = body.reminderQuestion
         security.reminderAnswer = body.reminderAnswer
         security.reminderUseCount = 0
-        memberSecurityBhv!!.insert(security)
+        memberSecurityBhv.insert(security)
 
         val service = MemberService()
         service.memberId = member.memberId
         service.servicePointCount = 0
         service.setServiceRankCode_Plastic()
-        memberServiceBhv!!.insert(service)
+        memberServiceBhv.insert(service)
         return member.memberId
     }
 
@@ -172,7 +172,7 @@ class LidoAuthAction : HarborBaseAction() {
         val member = Member()
         member.memberAccount = account
         member.setMemberStatusCode_Formalized()
-        memberBhv!!.updateNonstrict(member)
+        memberBhv.updateNonstrict(member)
     }
 
     companion object {

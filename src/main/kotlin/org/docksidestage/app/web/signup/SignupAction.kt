@@ -73,17 +73,17 @@ class SignupAction : HarborBaseAction() {
     fun signup(form: SignupForm): HtmlResponse {
         validate(form, { messages -> moreValidate(form, messages) }, { asHtml(HarborHtmlPath.path_Signup_SignupHtml) })
         val member = insertProvisionalMember(form)
-        val token = signupTokenAssist!!.saveSignupToken(member)
+        val token = signupTokenAssist.saveSignupToken(member)
         sendSignupMail(form, token)
         return redirect(MypageAction::class.java).afterTxCommit {
             // for asynchronous DB access
-            loginAssist!!.identityLogin(member.memberId) { op -> } // #simple_for_example no remember for now
+            loginAssist.identityLogin(member.memberId) { op -> } // #simple_for_example no remember for now
         }
     }
 
     private fun moreValidate(form: SignupForm, messages: HarborMessages) {
         if (LaStringUtil.isNotEmpty(form.memberAccount)) {
-            val count = memberBhv!!.selectCount { cb -> cb.query().setMemberAccount_Equal(form.memberAccount) }
+            val count = memberBhv.selectCount { cb -> cb.query().setMemberAccount_Equal(form.memberAccount) }
             if (count > 0) {
                 messages.addErrorsSignupAccountAlreadyExists("memberAccount")
             }
@@ -91,8 +91,8 @@ class SignupAction : HarborBaseAction() {
     }
 
     private fun sendSignupMail(form: SignupForm, token: String) {
-        WelcomeMemberPostcard.droppedInto(postbox!!) { postcard ->
-            postcard.setFrom(config!!.mailAddressSupport, HarborMessages.LABELS_MAIL_SUPPORT_PERSONAL)
+        WelcomeMemberPostcard.droppedInto(postbox) { postcard ->
+            postcard.setFrom(config.mailAddressSupport, HarborMessages.LABELS_MAIL_SUPPORT_PERSONAL)
             postcard.addTo(form.memberAccount!! + "@docksidestage.org") // #simple_for_example
             postcard.setDomain(config.serverDomain)
             postcard.setMemberName(form.memberName)
@@ -106,7 +106,7 @@ class SignupAction : HarborBaseAction() {
 
     @Execute
     fun register(account: String, token: String): HtmlResponse { // from mail link
-        signupTokenAssist!!.verifySignupTokenMatched(account, token)
+        signupTokenAssist.verifySignupTokenMatched(account, token)
         updateMemberAsFormalized(account)
         return redirect(SigninAction::class.java)
     }
@@ -119,21 +119,21 @@ class SignupAction : HarborBaseAction() {
         member.memberName = form.memberName
         member.memberAccount = form.memberAccount
         member.setMemberStatusCode_Provisional()
-        memberBhv!!.insert(member) // #simple_for_example same-name concurrent access as application exception
+        memberBhv.insert(member) // #simple_for_example same-name concurrent access as application exception
 
         val security = MemberSecurity()
         security.memberId = member.memberId
-        security.loginPassword = loginAssist!!.encryptPassword(form.password)
+        security.loginPassword = loginAssist.encryptPassword(form.password)
         security.reminderQuestion = form.reminderQuestion
         security.reminderAnswer = form.reminderAnswer
         security.reminderUseCount = 0
-        memberSecurityBhv!!.insert(security)
+        memberSecurityBhv.insert(security)
 
         val service = MemberService()
         service.memberId = member.memberId
         service.servicePointCount = 0
         service.setServiceRankCode_Plastic()
-        memberServiceBhv!!.insert(service)
+        memberServiceBhv.insert(service)
         return member
     }
 
@@ -141,6 +141,6 @@ class SignupAction : HarborBaseAction() {
         val member = Member()
         member.uniqueBy(account)
         member.setMemberStatusCode_Formalized()
-        memberBhv!!.updateNonstrict(member)
+        memberBhv.updateNonstrict(member)
     }
 }

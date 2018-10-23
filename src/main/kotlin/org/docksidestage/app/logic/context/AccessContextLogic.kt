@@ -61,7 +61,7 @@ class AccessContextLogic {
     fun create(resource: AccessContextResource, userTypeSupplier: UserTypeSupplier, userBeanSupplier: UserInfoSupplier,
                appTypeSupplier: AppTypeSupplier, clientInfoSupplier: ClientInfoSupplier): AccessContext {
         val context = AccessContext()
-        context.setAccessLocalDateTimeProvider { timeManager!!.currentDateTime() }
+        context.setAccessLocalDateTimeProvider { timeManager.currentDateTime() }
         context.setAccessUserProvider { buildAccessUserTrace(resource, userTypeSupplier, userBeanSupplier, appTypeSupplier, clientInfoSupplier) }
         return context
     }

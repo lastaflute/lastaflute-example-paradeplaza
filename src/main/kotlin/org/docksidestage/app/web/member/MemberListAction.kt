@@ -50,7 +50,7 @@ class MemberListAction : HarborBaseAction() {
         val beans = page.mappingList { member -> mappingToBean(member) }
         return asHtml(HarborHtmlPath.path_Member_MemberListHtml).renderWith { data ->
             data.register("beans", beans)
-            pagingAssist!!.registerPagingNavi(data, page, form)
+            pagingAssist.registerPagingNavi(data, page, form)
         }
     }
 
@@ -59,7 +59,7 @@ class MemberListAction : HarborBaseAction() {
     //                                                                              ======
     protected fun selectMemberPage(pageNumber: Int, form: MemberSearchForm): PagingResultBean<Member> {
         verifyOrIllegalTransition("The pageNumber should be positive number: $pageNumber", pageNumber > 0)
-        return memberBhv!!.selectPage { cb ->
+        return memberBhv.selectPage { cb ->
             cb.setupSelect_MemberStatus()
             cb.specify().derivedPurchase().count({ purchaseCB -> purchaseCB.specify().columnPurchaseId() }, Member.ALIAS_purchaseCount)
             if (LaStringUtil.isNotEmpty(form.memberName)) {

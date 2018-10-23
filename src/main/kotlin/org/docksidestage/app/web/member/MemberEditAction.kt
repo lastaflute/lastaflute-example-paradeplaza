@@ -66,7 +66,7 @@ class MemberEditAction : HarborBaseAction() {
     //                                                                              Select
     //                                                                              ======
     private fun selectMember(memberId: Int?): Member {
-        return memberBhv!!.selectEntity { cb ->
+        return memberBhv.selectEntity { cb ->
             cb.specify().derivedMemberLogin().max({ loginCB -> loginCB.specify().columnLoginDatetime() }, Member.ALIAS_latestLoginDatetime)
             cb.query().setMemberId_Equal(memberId)
             cb.query().setMemberStatusCode_InScope_ServiceAvailable()
@@ -85,13 +85,13 @@ class MemberEditAction : HarborBaseAction() {
         member.memberAccount = form.memberAccount
         if (member.isMemberStatusCodeFormalized) {
             if (form.previousStatus!!.isShortOfFormalized) {
-                member.formalizedDatetime = timeManager!!.currentDateTime()
+                member.formalizedDatetime = timeManager.currentDateTime()
             }
         } else if (member.isMemberStatusCode_ShortOfFormalized) {
             member.formalizedDatetime = null
         }
         member.versionNo = form.versionNo
-        memberBhv!!.update(member)
+        memberBhv.update(member)
         return member
     }
 
@@ -100,7 +100,7 @@ class MemberEditAction : HarborBaseAction() {
         member.memberId = form.memberId
         member.setMemberStatusCode_Withdrawal()
         member.versionNo = form.versionNo
-        memberBhv!!.update(member)
+        memberBhv.update(member)
     }
 
     // ===================================================================================

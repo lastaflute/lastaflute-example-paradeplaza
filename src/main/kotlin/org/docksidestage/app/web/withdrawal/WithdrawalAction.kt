@@ -67,15 +67,15 @@ class WithdrawalAction : HarborBaseAction() {
         withdrawal.memberId = memberId
         withdrawal.withdrawalReasonCodeAsWithdrawalReason = form.selectedReason
         withdrawal.withdrawalReasonInputText = form.reasonInput
-        withdrawal.withdrawalDatetime = timeManager!!.currentDateTime()
-        memberWithdrawalBhv!!.insert(withdrawal)
+        withdrawal.withdrawalDatetime = timeManager.currentDateTime()
+        memberWithdrawalBhv.insert(withdrawal)
     }
 
     private fun updateStatusWithdrawal(memberId: Int?) {
         val member = Member()
         member.memberId = memberId
         member.setMemberStatusCode_Withdrawal()
-        memberBhv!!.updateNonstrict(member)
+        memberBhv.updateNonstrict(member)
     }
 
     // ===================================================================================

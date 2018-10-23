@@ -52,7 +52,7 @@ class ProductListAction : HarborBaseAction() {
         val beans = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
         return asHtml(HarborHtmlPath.path_Product_ProductListHtml).renderWith { data ->
             data.register("beans", beans)
-            pagingAssist!!.registerPagingNavi(data, page, form)
+            pagingAssist.registerPagingNavi(data, page, form)
         }
     }
 
@@ -63,7 +63,7 @@ class ProductListAction : HarborBaseAction() {
     //                                                                              ======
     private fun selectProductPage(pageNumber: Int, form: ProductSearchForm): PagingResultBean<Product> {
         verifyOrClientError("The pageNumber should be positive number: $pageNumber", pageNumber > 0)
-        return productBhv!!.selectPage { cb ->
+        return productBhv.selectPage { cb ->
             cb.setupSelect_ProductStatus()
             cb.setupSelect_ProductCategory()
             cb.specify().derivedPurchase().max({ purchaseCB -> purchaseCB.specify().columnPurchaseDatetime() }, Product.ALIAS_latestPurchaseDate)

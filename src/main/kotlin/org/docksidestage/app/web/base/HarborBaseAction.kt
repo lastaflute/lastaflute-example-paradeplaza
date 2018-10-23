@@ -84,7 +84,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     //                                                                      ==============
     override fun newAccessContextArranger(): AccessContextArranger { // for framework
         return AccessContextArranger { resource ->
-            accessContextLogic!!.create(resource, object : AccessContextLogic.UserTypeSupplier {
+            accessContextLogic.create(resource, object : AccessContextLogic.UserTypeSupplier {
                 override fun supply(): OptionalThing<String> {
                     return myUserType()
                 }
@@ -100,7 +100,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
                 }
             }, object : AccessContextLogic.ClientInfoSupplier {
                 override fun supply(): OptionalThing<String> {
-                    return requestManager!!.headerUserAgent
+                    return requestManager.headerUserAgent
                 }
             })
         }
@@ -121,7 +121,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     //                                            ----------
     // #app_customize return empty if isLogin is unused
     override fun getUserBean(): OptionalThing<HarborUserBean> { // application may call, overriding for co-variant
-        return loginAssist!!.savedUserBean
+        return loginAssist.savedUserBean
     }
 
     override fun myUserType(): OptionalThing<String> { // for framework
@@ -129,7 +129,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     }
 
     override fun myLoginManager(): OptionalThing<LoginManager> { // for framework
-        return OptionalThing.of(loginAssist!!)
+        return OptionalThing.of(loginAssist)
     }
 
     // ===================================================================================

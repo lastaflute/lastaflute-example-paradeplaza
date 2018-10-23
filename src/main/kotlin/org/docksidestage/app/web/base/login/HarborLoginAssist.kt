@@ -60,11 +60,11 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     //                                                                           Find User
     //                                                                           =========
     override fun checkCredential(checker: CredentialChecker) {
-        checker.check(UserPasswordCredential::class.java, { credential -> memberBhv!!.selectCount { cb -> arrangeLoginByCredential(cb, credential) } > 0 })
+        checker.check(UserPasswordCredential::class.java, { credential -> memberBhv.selectCount { cb -> arrangeLoginByCredential(cb, credential) } > 0 })
     }
 
     override fun resolveCredential(resolver: CredentialResolver) {
-        resolver.resolve(UserPasswordCredential::class.java, { credential -> memberBhv!!.selectEntity { cb -> arrangeLoginByCredential(cb, credential) } })
+        resolver.resolve(UserPasswordCredential::class.java, { credential -> memberBhv.selectEntity { cb -> arrangeLoginByCredential(cb, credential) } })
     }
 
     private fun arrangeLoginByCredential(cb: MemberCB, credential: UserPasswordCredential) {
@@ -72,7 +72,7 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     }
 
     override fun doFindLoginUser(userId: Int?): OptionalEntity<Member> {
-        return memberBhv!!.selectEntity { cb -> cb.query().arrangeLoginByIdentity(userId) }
+        return memberBhv.selectEntity { cb -> cb.query().arrangeLoginByIdentity(userId) }
     }
 
     // ===================================================================================
@@ -83,7 +83,7 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     }
 
     override fun getCookieRememberMeKey(): OptionalThing<String> {
-        return OptionalThing.of(config!!.cookieRememberMeHarborKey)
+        return OptionalThing.of(config.cookieRememberMeHarborKey)
     }
 
     override fun toTypedUserId(userKey: String): Int? {
@@ -91,16 +91,16 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     }
 
     override fun saveLoginHistory(member: Member, userBean: HarborUserBean, option: LoginSpecifiedOption) {
-        asyncManager!!.async { transactionStage!!.requiresNew<Any> { tx -> insertLogin(member) } }
+        asyncManager.async { transactionStage.requiresNew<Any> { tx -> insertLogin(member) } }
     }
 
     protected fun insertLogin(member: Member) {
         val login = MemberLogin()
         login.memberId = member.memberId
         login.loginMemberStatusCodeAsMemberStatus = member.memberStatusCodeAsMemberStatus
-        login.loginDatetime = timeManager!!.currentDateTime()
+        login.loginDatetime = timeManager.currentDateTime()
         login.setMobileLoginFlg_False() // mobile unsupported for now
-        memberLoginBhv!!.insert(login)
+        memberLoginBhv.insert(login)
     }
 
     // ===================================================================================

@@ -56,11 +56,11 @@ class SignupTokenAssist {
         try {
             saved = createFileTextIO().read(buildTokenFilePath(token))
         } catch (e: RuntimeException) { // contains "file not found"
-            throw responseManager!!.new404("Unmatched signup token: requested=$token") { op -> op.cause(e) }
+            throw responseManager.new404("Unmatched signup token: requested=$token") { op -> op.cause(e) }
         }
 
         if (saved != account) {
-            throw responseManager!!.new404("Unmatched signup account: saved=$saved, requested=$account")
+            throw responseManager.new404("Unmatched signup account: saved=$saved, requested=$account")
         }
     }
 

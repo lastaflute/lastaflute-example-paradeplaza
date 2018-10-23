@@ -53,7 +53,7 @@ class ProfileAction : HarborBaseAction() {
     //                                                                              ======
     private fun selectMember(): Member {
         val memberId = userBean.get().memberId
-        val member = memberBhv!!.selectEntity { cb ->
+        val member = memberBhv.selectEntity { cb ->
             cb.setupSelect_MemberStatus()
             cb.setupSelect_MemberServiceAsOne().withServiceRank()
             cb.query().setMemberId_Equal(memberId)

@@ -33,7 +33,7 @@ class SignoutAction : HarborBaseAction() {
 
     @Execute
     fun index(): HtmlResponse {
-        loginAssist!!.logout()
+        loginAssist.logout()
         return redirect(SigninAction::class.java)
     }
 }
