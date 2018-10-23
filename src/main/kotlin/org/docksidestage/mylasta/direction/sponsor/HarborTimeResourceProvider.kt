@@ -23,13 +23,10 @@ import org.lastaflute.core.time.TypicalTimeResourceProvider
 /**
  * @author jflute
  */
-class HarborTimeResourceProvider// ===================================================================================
-//                                                                         Constructor
-//                                                                         ===========
-(// ===================================================================================
-        //                                                                           Attribute
-        //                                                                           =========
-        protected val config: HarborConfig) : TypicalTimeResourceProvider() {
+class HarborTimeResourceProvider(protected val config: HarborConfig) : TypicalTimeResourceProvider() {
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
 
     // ===================================================================================
     //                                                                      Basic Handling

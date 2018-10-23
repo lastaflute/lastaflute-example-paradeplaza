@@ -21,10 +21,7 @@ import org.lastaflute.web.login.TypicalUserBean
 /**
  * @author jflute
  */
-class HarborUserBean// ===================================================================================
-//                                                                         Constructor
-//                                                                         ===========
-(member: Member) : TypicalUserBean<Int>() { // #change_it also LoginAssist
+class HarborUserBean(member: Member) : TypicalUserBean<Int>() { // #change_it also LoginAssist
 
     // ===================================================================================
     //                                                                           Attribute

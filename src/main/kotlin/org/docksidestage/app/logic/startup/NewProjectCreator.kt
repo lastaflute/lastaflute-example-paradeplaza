@@ -31,7 +31,7 @@ import java.io.IOException
 class NewProjectCreator(
         val appName: String, val projectDir: File, val serviceNameFilter: ServiceNameFilter) {
 
-// ===================================================================================
+    // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
 
@@ -141,6 +141,7 @@ class NewProjectCreator(
     // ===================================================================================
     //                                                                       Create Filter
     //                                                                       =============
+
     // -----------------------------------------------------
     //                                  Configuration Filter
     //                                  --------------------

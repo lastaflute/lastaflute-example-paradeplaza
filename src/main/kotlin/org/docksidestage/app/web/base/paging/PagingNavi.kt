@@ -26,22 +26,18 @@ import java.net.URLEncoder
 import java.util.function.Consumer
 
 /**
- * @author jflute
- */
-class PagingNavi
-// ===================================================================================
-//                                                                         Constructor
-//                                                                         ===========
-/**
  * @param page The selected page as bean of paging result. (NotNull)
  * @param opLambda The callback for option of page range. (NotNull)
  * @param queryForm The form for query string added to link. (NotNull)
+ *
+ * @author jflute
  */
-(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>, queryForm: Any) : Serializable { // #app_customize
+class PagingNavi(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>, queryForm: Any) : Serializable { // #app_customize
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+
     // ===================================================================================
     //                                                                            Accessor
     //                                                                            ========

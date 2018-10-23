@@ -38,13 +38,10 @@ import org.lastaflute.core.util.ContainerUtil
 /**
  * @author jflute
  */
-class HarborMailDeliveryDepartmentCreator// ===================================================================================
-//                                                                         Constructor
-//                                                                         ===========
-(// ===================================================================================
-        //                                                                           Attribute
-        //                                                                           =========
-        protected val config: HarborConfig) {
+class HarborMailDeliveryDepartmentCreator(protected val config: HarborConfig) {
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
 
     // ===================================================================================
     //                                                                           Component

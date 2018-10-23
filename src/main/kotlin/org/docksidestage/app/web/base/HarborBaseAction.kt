@@ -168,8 +168,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     // * o xxx() <span style="color: #3F7E5E">// xxx</span>
     // * </pre>
     // */
-    //@Override
-    //public void document1_CallableSuperMethod() {
-    //    super.document1_CallableSuperMethod();
-    //}
+    //    override fun document1_CallableSuperMethod: Unit {
+    //        super.document1_CallableSuperMethod()
+    //    }
 }

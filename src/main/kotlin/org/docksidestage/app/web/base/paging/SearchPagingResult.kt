@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull
  * @param <BEAN> The type of row bean
  * @author iwamatsu0430
  * @author jflute
-</BEAN> */
+ */
 class SearchPagingResult<BEAN>(page: PagingResultBean<out Entity>,
                                /** paging data for current page  */
                                @field:NotNull
