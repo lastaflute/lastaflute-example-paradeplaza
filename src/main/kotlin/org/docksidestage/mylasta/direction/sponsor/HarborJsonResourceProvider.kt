@@ -13,12 +13,11 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.direction.sponsor;
+package org.docksidestage.mylasta.direction.sponsor
 
-import org.lastaflute.core.json.JsonResourceProvider;
+import org.lastaflute.core.json.JsonResourceProvider
 
 /**
  * @author jflute
  */
-public class HarborJsonResourceProvider implements JsonResourceProvider {
-}
+class HarborJsonResourceProvider : JsonResourceProvider

@@ -13,23 +13,22 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.direction.sponsor;
+package org.docksidestage.mylasta.direction.sponsor
 
-import org.dbflute.util.DfTypeUtil;
-import org.lastaflute.web.path.ActionAdjustmentProvider;
+import org.dbflute.util.DfTypeUtil
+import org.lastaflute.web.path.ActionAdjustmentProvider
 
 /**
  * @author jflute
  */
-public class HarborActionAdjustmentProvider implements ActionAdjustmentProvider {
+class HarborActionAdjustmentProvider : ActionAdjustmentProvider {
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // you can adjust your actions by overriding
     // default methods defined at the interface
     // _/_/_/_/_/_/_/_/_/_/
 
-    @Override
-    public String toString() {
-        return DfTypeUtil.toClassTitle(this) + ":{}";
+    override fun toString(): String {
+        return DfTypeUtil.toClassTitle(this) + ":{}"
     }
 }
