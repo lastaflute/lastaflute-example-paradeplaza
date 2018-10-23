@@ -32,7 +32,7 @@ class SignupTokenAssist {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private val responseManager: ResponseManager? = null
+    private lateinit var responseManager: ResponseManager
 
     // ===================================================================================
     //                                                                               Save

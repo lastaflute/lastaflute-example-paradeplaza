@@ -24,11 +24,11 @@ class WithdrawalAction : HarborBaseAction() {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private val timeManager: TimeManager? = null
+    private lateinit var timeManager: TimeManager
     @Resource
-    private val memberBhv: MemberBhv? = null
+    private lateinit var memberBhv: MemberBhv
     @Resource
-    private val memberWithdrawalBhv: MemberWithdrawalBhv? = null
+    private lateinit var memberWithdrawalBhv: MemberWithdrawalBhv
 
     // ===================================================================================
     //                                                                             Execute

@@ -30,7 +30,7 @@ class AccessContextLogic {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private val timeManager: TimeManager? = null
+    private lateinit var timeManager: TimeManager
 
     // ===================================================================================
     //                                                                  Resource Interface
