@@ -58,11 +58,11 @@ class SigninActionTest : UnitHarborTestCase() {
         val htmlData = validateHtmlData(response)
         htmlData.assertRedirect(MypageAction::class.java)
 
-        val userBean = loginAssist!!.savedUserBean.get()
+        val userBean = loginAssist.savedUserBean.get()
         log(userBean)
         Assert.assertEquals(form.account, userBean.memberAccount)
-        Assert.assertEquals(1, memberLoginBhv!!.selectCount { cb ->
-            cb.query().setLoginDatetime_Equal(timeManager!!.currentDateTime()) // transaction time
+        Assert.assertEquals(1, memberLoginBhv.selectCount { cb ->
+            cb.query().setLoginDatetime_Equal(timeManager.currentDateTime()) // transaction time
         })
     }
 

@@ -67,7 +67,7 @@ class SignupActionTest : UnitHarborTestCase() {
         val htmlData = validateHtmlData(response)
         htmlData.assertRedirect(MypageAction::class.java)
 
-        memberBhv!!.selectEntity { cb ->
+        memberBhv.selectEntity { cb ->
             cb.setupSelect_MemberLoginAsLatest()
             cb.setupSelect_MemberSecurityAsOne()
             cb.query().setMemberAccount_Equal(form.memberAccount)

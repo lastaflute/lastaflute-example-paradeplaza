@@ -47,7 +47,7 @@ class StartupLogic {
 
     protected fun buildPackageName(domain: String): String { // e.g. docksidestage.org to org.docksidestage
         val elementList = ArrayList(Arrays.asList(*domain.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()))
-        Collections.reverse(elementList)
+        elementList.reverse()
         val pkgName = elementList.stream().reduce { left, right -> "$left.$right" }.get()
         return pkgName.replace("-", "") // e.g. org.dockside-stage to org.docksidestage
     }

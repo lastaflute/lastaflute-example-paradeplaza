@@ -15,12 +15,6 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.util.stream.Collectors
-
-import javax.servlet.http.HttpServletResponse
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
-
 import org.dbflute.optional.OptionalThing
 import org.docksidestage.mylasta.direction.sponsor.HarborApiFailureHook.UnifiedFailureResult.FailureErrorPart
 import org.lastaflute.web.api.ApiFailureHook
@@ -31,6 +25,10 @@ import org.lastaflute.web.login.exception.LoginRequiredException
 import org.lastaflute.web.response.ApiResponse
 import org.lastaflute.web.response.JsonResponse
 import org.lastaflute.web.validation.Required
+import java.util.stream.Collectors
+import javax.servlet.http.HttpServletResponse
+import javax.validation.Valid
+import javax.validation.constraints.NotNull
 
 /**
  * @author jflute
@@ -128,7 +126,7 @@ class HarborApiFailureHook : ApiFailureHook { // #change_it for handling API fai
         // ===================================================================================
         //                                                                          Definition
         //                                                                          ==========
-        protected val BUSINESS_FAILURE_STATUS = HttpServletResponse.SC_BAD_REQUEST
+        protected const val BUSINESS_FAILURE_STATUS = HttpServletResponse.SC_BAD_REQUEST
         protected val failureTypeMapping: BusinessFailureMapping<UnifiedFailureType> // for application exception
 
         init { // you can add mapping of failure type with exception

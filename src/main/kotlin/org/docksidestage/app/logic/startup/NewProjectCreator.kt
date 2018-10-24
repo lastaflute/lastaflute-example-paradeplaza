@@ -73,7 +73,7 @@ class NewProjectCreator(
         if (isWebInfViewResource(canonicalPath) && !isViewMigrated(canonicalPath)) { // e.g. /view/product
             return false
         }
-        return if (isMyLastaOnlyExample(canonicalPath) // e.g. /mylasta/mail/
+        return !(isMyLastaOnlyExample(canonicalPath) // e.g. /mylasta/mail/
                 || isResourcesOnlyExample(canonicalPath) // e.g. /resources/mail/
                 || isStartUpTool(canonicalPath) // e.g. this
                 || isDemoTestResource(canonicalPath) // e.g. .gitignore for DemoTest
@@ -84,9 +84,7 @@ class NewProjectCreator(
                 || isErdImage(canonicalPath) // e.g. maihamadb.png
                 || isOssText(canonicalPath) // e.g. LICENSE
                 || isGitDir(canonicalPath) // e.g. .git
-                || isBuildDir(canonicalPath)) {
-            false
-        } else true
+                || isBuildDir(canonicalPath))
     }
 
     // -----------------------------------------------------
@@ -104,30 +102,19 @@ class NewProjectCreator(
         } else {
             val textIO = FileTextIO().encodeAsUTF8()
             val filtered: String?
-            if (canonicalPath.endsWith("additionalForeignKeyMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createAdditionalForeignKeyFilter())
-            } else if (canonicalPath.endsWith("classificationDefinitionMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createClassificationDefinitionFilter())
-            } else if (canonicalPath.endsWith("classificationDeploymentMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createClassificationDeploymentFilter())
-            } else if (canonicalPath.endsWith("basicInfoMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createBasicInfoMapFilter())
-            } else if (canonicalPath.endsWith("databaseInfoMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createDatabaseInfoMapFilter())
-            } else if (canonicalPath.endsWith("databaseInfoMap+.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createDatabaseInfoMapFilter())
-            } else if (canonicalPath.endsWith("documentMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createDocumentMapFilter())
-            } else if (canonicalPath.endsWith("lastafluteMap.dfprop")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createLastaFluteMapFilter())
-            } else if (canonicalPath.endsWith("_env.properties")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createEnvPropertiesFilter())
-            } else if (canonicalPath.endsWith("pom.xml")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createPomXmlFilter())
-            } else if (canonicalPath.endsWith("HarborFwAssistantDirector.java")) {
-                filtered = textIO.readFilteringLine(canonicalPath, createFwAssistantDirectorFilter())
-            } else {
-                filtered = textIO.readFilteringLine(canonicalPath) { line -> filterServiceName(line) }
+            filtered = when {
+                canonicalPath.endsWith("additionalForeignKeyMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createAdditionalForeignKeyFilter())
+                canonicalPath.endsWith("classificationDefinitionMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDefinitionFilter())
+                canonicalPath.endsWith("classificationDeploymentMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDeploymentFilter())
+                canonicalPath.endsWith("basicInfoMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createBasicInfoMapFilter())
+                canonicalPath.endsWith("databaseInfoMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createDatabaseInfoMapFilter())
+                canonicalPath.endsWith("databaseInfoMap+.dfprop") -> textIO.readFilteringLine(canonicalPath, createDatabaseInfoMapFilter())
+                canonicalPath.endsWith("documentMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createDocumentMapFilter())
+                canonicalPath.endsWith("lastafluteMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createLastaFluteMapFilter())
+                canonicalPath.endsWith("_env.properties") -> textIO.readFilteringLine(canonicalPath, createEnvPropertiesFilter())
+                canonicalPath.endsWith("pom.xml") -> textIO.readFilteringLine(canonicalPath, createPomXmlFilter())
+                canonicalPath.endsWith("HarborFwAssistantDirector.java") -> textIO.readFilteringLine(canonicalPath, createFwAssistantDirectorFilter())
+                else -> textIO.readFilteringLine(canonicalPath) { line -> filterServiceName(line) }
             }
             if (filtered == null) { // just in case
                 val msg = "Filtered string was null or mpety: path=$canonicalPath, filtered=$filtered"
@@ -150,14 +137,14 @@ class NewProjectCreator(
             private var skipped: Boolean = false
 
             override fun filter(line: String): String? {
-                if (line.startsWith("map:{")) {
+                return if (line.startsWith("map:{")) {
                     skipped = true
-                    return line
+                    line
                 } else if (line.startsWith("}")) {
                     skipped = false
-                    return line
+                    line
                 } else {
-                    return if (skipped) {
+                    if (skipped) {
                         null
                     } else filterServiceName(line)
                 }
@@ -170,14 +157,16 @@ class NewProjectCreator(
             private var skipped: Boolean = false
 
             override fun filter(line: String): String? {
-                if (line.startsWith("    ; ServiceRank = ")) { // Flg and MemberStatus only
-                    skipped = true
-                    return null
-                } else if (line.startsWith("}")) {
-                    skipped = false
-                    return line
-                } else {
-                    return if (skipped) {
+                return when {
+                    line.startsWith("    ; ServiceRank = ") -> { // Flg and MemberStatus only
+                        skipped = true
+                        null
+                    }
+                    line.startsWith("}") -> {
+                        skipped = false
+                        line
+                    }
+                    else -> if (skipped) {
                         null
                     } else filterServiceName(line)
                 }
@@ -186,24 +175,20 @@ class NewProjectCreator(
     }
 
     protected fun createClassificationDeploymentFilter(): FileTextLineFilter {
-        return object : FileTextLineFilter {
-            override fun filter(line: String): String? {
-                if (line.startsWith("    ; PURCHASE_PAYMENT = ")) {
-                    return null
-                }
-                return filterServiceName(line)
+        return FileTextLineFilter { line ->
+            if (line.startsWith("    ; PURCHASE_PAYMENT = ")) {
+                return@FileTextLineFilter null
             }
+            filterServiceName(line)
         }
     }
 
     protected fun createBasicInfoMapFilter(): FileTextLineFilter {
-        return object : FileTextLineFilter {
-            override fun filter(line: String): String? {
-                if (line.trim({ it <= ' ' }).startsWith("#")) { // to keep comment
-                    return line
-                }
-                return filterServiceName(filterJdbcSettings(line))
+        return FileTextLineFilter { line ->
+            if (line.trim { it <= ' ' }.startsWith("#")) { // to keep comment
+                return@FileTextLineFilter line
             }
+            filterServiceName(filterJdbcSettings(line))
         }
     }
 
@@ -212,11 +197,7 @@ class NewProjectCreator(
     }
 
     protected fun createDocumentMapFilter(): FileTextLineFilter {
-        return object : FileTextLineFilter {
-            override fun filter(line: String): String? {
-                return filterServiceName(filterJdbcSettings(line))
-            }
-        }
+        return FileTextLineFilter { line -> filterServiceName(filterJdbcSettings(line)) }
     }
 
     protected fun createLastaFluteMapFilter(): FileTextLineFilter {
@@ -240,13 +221,13 @@ class NewProjectCreator(
                     if (line.contains("; $appName = map:{")) {
                         currentApp = true
                     }
-                    if (currentApp) {
+                    return if (currentApp) {
                         if (line.startsWith("        }")) {
                             currentApp = false
                         }
-                        return filterServiceName(line)
+                        filterServiceName(line)
                     } else {
-                        return null
+                        null
                     }
                 } else {
                     return filterServiceName(line)
@@ -259,19 +240,11 @@ class NewProjectCreator(
     //                                  Configuration Filter
     //                                  --------------------
     protected fun createEnvPropertiesFilter(): FileTextLineFilter {
-        return object : FileTextLineFilter {
-            override fun filter(line: String): String? {
-                return filterServiceName(filterJdbcSettings(line))
-            }
-        }
+        return FileTextLineFilter { line -> filterServiceName(filterJdbcSettings(line)) }
     }
 
     protected fun createPomXmlFilter(): FileTextLineFilter {
-        return object : FileTextLineFilter {
-            override fun filter(line: String): String? {
-                return filterServiceName(filterJdbcSettings(line))
-            }
-        }
+        return FileTextLineFilter { line -> filterServiceName(filterJdbcSettings(line)) }
     }
 
     protected fun createFwAssistantDirectorFilter(): FileTextLineFilter {

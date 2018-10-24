@@ -15,15 +15,6 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.io.File
-import java.io.IOException
-import java.io.InputStream
-import java.io.Serializable
-import java.util.Hashtable
-
-import javax.servlet.ServletException
-import javax.servlet.http.HttpServletRequest
-
 import org.apache.commons.fileupload.FileItem
 import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException
 import org.apache.commons.fileupload.FileUploadException
@@ -39,8 +30,14 @@ import org.lastaflute.web.ruts.multipart.MultipartRequestHandler
 import org.lastaflute.web.ruts.multipart.MultipartRequestWrapper
 import org.lastaflute.web.ruts.multipart.exception.MultipartExceededException
 import org.lastaflute.web.util.LaServletContextUtil
-import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.io.File
+import java.io.IOException
+import java.io.InputStream
+import java.io.Serializable
+import java.util.*
+import javax.servlet.ServletException
+import javax.servlet.http.HttpServletRequest
 
 /**
  * @author modified by jflute (originated in Seasar)
@@ -73,7 +70,7 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
         get() {
             val tempDirFile = LaServletContextUtil.getServletContext().getAttribute(CONTEXT_TEMPDIR_KEY) as File
             var tempDir: String? = tempDirFile.absolutePath
-            if (tempDir == null || tempDir.length == 0) {
+            if (tempDir == null || tempDir.isEmpty()) {
                 tempDir = System.getProperty(JAVA_IO_TMPDIR_KEY)
             }
             return tempDir
@@ -274,10 +271,10 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
 
         }
         if (!haveValue) {
-            try {
-                value = item.getString("ISO-8859-1")
+            value = try {
+                item.getString("ISO-8859-1")
             } catch (uee: java.io.UnsupportedEncodingException) {
-                value = item.string
+                item.string
             }
 
             haveValue = true
@@ -288,10 +285,10 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
         if (value != null) {
             val oldArray = elementsText[name]
             val newArray: Array<String>
-            if (oldArray != null) {
-                newArray = oldArray + arrayOf<String>(value)
+            newArray = if (oldArray != null) {
+                oldArray + arrayOf(value)
             } else {
-                newArray = arrayOf<String>(value)
+                arrayOf(value)
             }
             elementsText[name] = newArray
             elementsAll[name] = newArray
@@ -391,9 +388,9 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
         //                                                                          Definition
         //                                                                          ==========
         private val logger = LoggerFactory.getLogger(HarborMultipartRequestHandler::class.java)
-        val DEFAULT_SIZE_MAX = (250 * 1024 * 1024).toLong() // 250MB
-        val DEFAULT_SIZE_THRESHOLD = 256 * 1024 // 250KB
-        protected val CONTEXT_TEMPDIR_KEY = "javax.servlet.context.tempdir"
-        protected val JAVA_IO_TMPDIR_KEY = "java.io.tmpdir"
+        const val DEFAULT_SIZE_MAX = (250 * 1024 * 1024).toLong() // 250MB
+        const val DEFAULT_SIZE_THRESHOLD = 256 * 1024 // 250KB
+        protected const val CONTEXT_TEMPDIR_KEY = "javax.servlet.context.tempdir"
+        protected const val JAVA_IO_TMPDIR_KEY = "java.io.tmpdir"
     }
 }

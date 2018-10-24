@@ -29,15 +29,9 @@ class HarborUserBean(member: Member) : TypicalUserBean<Int>() { // #change_it al
     // ===================================================================================
     //                                                                            Accessor
     //                                                                            ========
-    val memberId: Int?
-    val memberName: String
-    val memberAccount: String
-
-    init {
-        memberId = member.memberId
-        memberName = member.memberName
-        memberAccount = member.memberAccount
-    }
+    val memberId: Int? = member.memberId
+    val memberName: String = member.memberName
+    val memberAccount: String = member.memberAccount
 
     // ===================================================================================
     //                                                                      Implementation
@@ -52,6 +46,6 @@ class HarborUserBean(member: Member) : TypicalUserBean<Int>() { // #change_it al
         //                                                                          Definition
         //                                                                          ==========
         /** The serial version UID for object serialization. (Default)  */
-        private val serialVersionUID = 1L
+        private const val serialVersionUID = 1L
     }
 }

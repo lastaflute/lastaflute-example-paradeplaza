@@ -27,7 +27,7 @@ import java.time.LocalDateTime
  */
 class MemberEditForm {
 
-    @Required(groups = arrayOf(ClientError::class))
+    @Required(groups = [ClientError::class])
     var memberId: Int? = null
 
     @Required
@@ -48,9 +48,9 @@ class MemberEditForm {
 
     var updateDatetime: LocalDateTime? = null // only view
 
-    @Required(groups = arrayOf(ClientError::class))
+    @Required(groups = [ClientError::class])
     var previousStatus: CDef.MemberStatus? = null
 
-    @Required(groups = arrayOf(ClientError::class))
+    @Required(groups = [ClientError::class])
     var versionNo: Long? = null
 }

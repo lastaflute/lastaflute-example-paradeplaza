@@ -34,7 +34,7 @@ class StartupTest : UnitHarborTestCase() {
     fun test_startup_actually() {
         val domain = "dancingdb.org"
         val serviceName = "mythica"
-        startupLogic!!.fromHarbor(projectDir, domain, serviceName)
+        startupLogic.fromHarbor(projectDir, domain, serviceName)
         refresh(serviceName) // for retry
     }
 

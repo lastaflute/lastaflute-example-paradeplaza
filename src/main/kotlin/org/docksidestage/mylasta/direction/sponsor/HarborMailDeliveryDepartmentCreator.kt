@@ -15,8 +15,6 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.util.Locale
-
 import org.dbflute.mail.CardView
 import org.dbflute.mail.send.SMailDeliveryDepartment
 import org.dbflute.mail.send.SMailPostalMotorbike
@@ -34,6 +32,7 @@ import org.lastaflute.core.magic.async.AsyncManager
 import org.lastaflute.core.magic.async.ConcurrentAsyncCall
 import org.lastaflute.core.message.MessageManager
 import org.lastaflute.core.util.ContainerUtil
+import java.util.*
 
 /**
  * @author jflute

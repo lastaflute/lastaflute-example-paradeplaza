@@ -16,7 +16,6 @@
 package org.docksidestage.app.web.base.paging
 
 import org.dbflute.Entity
-import org.dbflute.cbean.paging.numberlink.range.PageRangeOption
 import org.dbflute.cbean.result.PagingResultBean
 import org.lastaflute.web.response.render.RenderData
 import java.util.function.Consumer
@@ -37,7 +36,7 @@ class PagingAssist { // #app_customize
      * @param form The form for query string added to link. (NotNull)
      */
     fun registerPagingNavi(data: RenderData, page: PagingResultBean<out Entity>, form: Any) {
-        data.register(NAVI_KEY, PagingNavi(page, Consumer<PageRangeOption> { op -> op.rangeSize(3).fillLimit() }, form))
+        data.register(NAVI_KEY, PagingNavi(page, Consumer { op -> op.rangeSize(3).fillLimit() }, form))
     }
 
     // ===================================================================================
@@ -55,6 +54,6 @@ class PagingAssist { // #app_customize
 
     companion object {
 
-        val NAVI_KEY = "pagingNavi" // public for e.g. unit test
+        const val NAVI_KEY = "pagingNavi" // public for e.g. unit test
     }
 }

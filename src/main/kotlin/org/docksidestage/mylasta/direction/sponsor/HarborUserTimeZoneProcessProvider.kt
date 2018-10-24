@@ -15,14 +15,13 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.util.TimeZone
-
 import org.dbflute.optional.OptionalObject
 import org.dbflute.optional.OptionalThing
 import org.dbflute.util.DfTypeUtil
 import org.lastaflute.web.ruts.process.ActionRuntime
 import org.lastaflute.web.servlet.request.RequestManager
 import org.lastaflute.web.servlet.request.UserTimeZoneProcessProvider
+import java.util.*
 
 /**
  * @author jflute
@@ -56,6 +55,6 @@ class HarborUserTimeZoneProcessProvider : UserTimeZoneProcessProvider {
 
     companion object {
 
-        val centralTimeZone = TimeZone.getDefault()
+        val centralTimeZone = TimeZone.getDefault()!!
     }
 }

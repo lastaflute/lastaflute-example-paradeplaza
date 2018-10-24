@@ -150,10 +150,10 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
         //                                                                          Definition
         //                                                                          ==========
         /** The application type for HarBoR, e.g. used by access context.  */
-        protected val APP_TYPE = "HBR" // #change_it_first
+        protected const val APP_TYPE = "HBR" // #change_it_first
 
         /** The user type for Member, e.g. used by access context.  */
-        protected val USER_TYPE = "M" // #change_it_first (can delete if no isLogin)
+        protected const val USER_TYPE = "M" // #change_it_first (can delete if no isLogin)
     }
 
     // ===================================================================================

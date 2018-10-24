@@ -15,8 +15,6 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.util.function.Function
-
 import org.dbflute.jdbc.ClassificationMeta
 import org.dbflute.optional.OptionalThing
 import org.docksidestage.dbflute.allcommon.CDef
@@ -24,6 +22,7 @@ import org.docksidestage.dbflute.allcommon.DBCurrent
 import org.docksidestage.mylasta.appcls.AppCDef
 import org.lastaflute.db.dbflute.classification.TypicalListedClassificationProvider
 import org.lastaflute.db.dbflute.exception.ProvidedClassificationNotFoundException
+import java.util.function.Function
 
 /**
  * @author jflute

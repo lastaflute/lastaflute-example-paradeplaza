@@ -180,6 +180,6 @@ class LidoAuthAction : HarborBaseAction() {
         // ===================================================================================
         //                                                                          Definition
         //                                                                          ==========
-        private val SIGNUP_TOKEN_KEY = "signupToken"
+        private const val SIGNUP_TOKEN_KEY = "signupToken"
     }
 }

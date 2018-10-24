@@ -15,14 +15,13 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import java.util.Locale
-
 import org.dbflute.optional.OptionalObject
 import org.dbflute.optional.OptionalThing
 import org.dbflute.util.DfTypeUtil
 import org.lastaflute.web.ruts.process.ActionRuntime
 import org.lastaflute.web.servlet.request.RequestManager
 import org.lastaflute.web.servlet.request.UserLocaleProcessProvider
+import java.util.*
 
 /**
  * @author jflute

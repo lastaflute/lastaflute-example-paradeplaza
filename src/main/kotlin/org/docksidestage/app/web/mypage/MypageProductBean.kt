@@ -10,14 +10,9 @@ import org.lastaflute.web.validation.Required
 class MypageProductBean(product: Product) {
 
     @Required
-    val productName: String
+    val productName: String = product.productName
     @Required
-    val regularPrice: Int?
-
-    init {
-        this.productName = product.productName
-        this.regularPrice = product.regularPrice
-    }
+    val regularPrice: Int? = product.regularPrice
 
     override fun toString(): String {
         return Lato.string(this)

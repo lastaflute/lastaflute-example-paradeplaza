@@ -55,6 +55,6 @@ abstract class UnitHarborTestCase : WebContainerTestCase() {
     //                                                                         Test Helper
     //                                                                         ===========
     protected fun mockLogin() {
-        loginAssist!!.identityLogin(mockLoginUserId) { op -> op.silentLogin(true) }
+        loginAssist.identityLogin(mockLoginUserId) { op -> op.silentLogin(true) }
     }
 }

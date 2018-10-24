@@ -25,7 +25,7 @@ class MemberEditActionTest : UnitHarborTestCase() {
         val action = MemberEditAction()
         inject(action)
         val memberId = 1
-        val member = memberBhv!!.selectByPK(memberId).get()
+        val member = memberBhv.selectByPK(memberId).get()
 
         // ## Act ##
         val response = action.index(memberId)
@@ -71,7 +71,7 @@ class MemberEditActionTest : UnitHarborTestCase() {
 
     private fun prepareEditForm(): MemberEditForm {
         val memberId = 1
-        val member = memberBhv!!.selectByPK(memberId).get()
+        val member = memberBhv.selectByPK(memberId).get()
 
         val form = MemberEditForm()
         form.memberId = memberId

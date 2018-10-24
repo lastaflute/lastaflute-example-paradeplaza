@@ -18,7 +18,7 @@ class CipherSetupTest : UnitHarborTestCase() {
 
     @Throws(Exception::class)
     fun test_primary() {
-        val encrypted = primaryCipher!!.encrypt("sea")
+        val encrypted = primaryCipher.encrypt("sea")
         log("encrypted: {}", encrypted)
         val decrypted = primaryCipher.decrypt(encrypted)
         log("decrypted: {}", decrypted)
@@ -28,7 +28,7 @@ class CipherSetupTest : UnitHarborTestCase() {
 
     @Throws(Exception::class)
     fun test_cookie() {
-        val encrypted = cookieCipher!!.encrypt("sea")
+        val encrypted = cookieCipher.encrypt("sea")
         log("encrypted: {}", encrypted)
         val decrypted = cookieCipher.decrypt(encrypted)
         log("decrypted: {}", decrypted)

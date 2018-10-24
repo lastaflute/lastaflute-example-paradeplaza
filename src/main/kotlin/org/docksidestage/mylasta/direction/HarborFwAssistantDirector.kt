@@ -15,20 +15,7 @@
  */
 package org.docksidestage.mylasta.direction
 
-import javax.annotation.Resource
-
-import org.docksidestage.mylasta.direction.sponsor.HarborActionAdjustmentProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborApiFailureHook
-import org.docksidestage.mylasta.direction.sponsor.HarborCookieResourceProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborCurtainBeforeHook
-import org.docksidestage.mylasta.direction.sponsor.HarborJsonResourceProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborListedClassificationProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborMailDeliveryDepartmentCreator
-import org.docksidestage.mylasta.direction.sponsor.HarborMultipartRequestHandler
-import org.docksidestage.mylasta.direction.sponsor.HarborSecurityResourceProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborTimeResourceProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborUserLocaleProcessProvider
-import org.docksidestage.mylasta.direction.sponsor.HarborUserTimeZoneProcessProvider
+import org.docksidestage.mylasta.direction.sponsor.*
 import org.lastaflute.core.direction.CachedFwAssistantDirector
 import org.lastaflute.core.direction.CurtainBeforeHook
 import org.lastaflute.core.direction.FwAssistDirection
@@ -51,6 +38,7 @@ import org.lastaflute.web.servlet.filter.cors.CorsHook
 import org.lastaflute.web.servlet.request.UserLocaleProcessProvider
 import org.lastaflute.web.servlet.request.UserTimeZoneProcessProvider
 import java.util.function.Consumer
+import javax.annotation.Resource
 
 /**
  * @author jflute

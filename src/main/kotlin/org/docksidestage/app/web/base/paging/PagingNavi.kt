@@ -92,7 +92,7 @@ class PagingNavi(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>,
             if (value == null || value is String && value.isEmpty()) {
                 continue
             }
-            sb.append(if (sb.length == 0) "?" else "&")
+            sb.append(if (sb.isEmpty()) "?" else "&")
             sb.append(encode(pd.propertyName)).append("=").append(encode(value.toString()))
         }
         return sb.toString()

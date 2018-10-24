@@ -60,11 +60,11 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     //                                                                           Find User
     //                                                                           =========
     override fun checkCredential(checker: CredentialChecker) {
-        checker.check(UserPasswordCredential::class.java, { credential -> memberBhv.selectCount { cb -> arrangeLoginByCredential(cb, credential) } > 0 })
+        checker.check(UserPasswordCredential::class.java) { credential -> memberBhv.selectCount { cb -> arrangeLoginByCredential(cb, credential) } > 0 }
     }
 
     override fun resolveCredential(resolver: CredentialResolver) {
-        resolver.resolve(UserPasswordCredential::class.java, { credential -> memberBhv.selectEntity { cb -> arrangeLoginByCredential(cb, credential) } })
+        resolver.resolve(UserPasswordCredential::class.java) { credential -> memberBhv.selectEntity { cb -> arrangeLoginByCredential(cb, credential) } }
     }
 
     private fun arrangeLoginByCredential(cb: MemberCB, credential: UserPasswordCredential) {
