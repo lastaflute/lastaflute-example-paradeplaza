@@ -15,8 +15,8 @@
  */
 package org.docksidestage.app.web.signout
 
-import org.docksidestage.app.web.base.HarborBaseAction
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.signin.SigninAction
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
@@ -26,10 +26,10 @@ import javax.annotation.Resource
  * @author toshiaki.arai
  * @author jflute
  */
-class SignoutAction : HarborBaseAction() {
+class SignoutAction : ParadeplazaBaseAction() {
 
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     @Execute
     fun index(): HtmlResponse {

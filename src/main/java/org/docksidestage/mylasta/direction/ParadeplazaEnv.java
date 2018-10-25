@@ -21,7 +21,7 @@ import org.lastaflute.core.direction.exception.ConfigPropertyNotFoundException;
 /**
  * @author FreeGen
  */
-public interface HarborEnv {
+public interface ParadeplazaEnv {
 
     /** The key of the configuration. e.g. hot */
     String lasta_di_SMART_DEPLOY_MODE = "lasta_di.smart.deploy.mode";
@@ -44,7 +44,7 @@ public interface HarborEnv {
     /** The key of the configuration. e.g. debug */
     String LOG_CONSOLE_LEVEL = "log.console.level";
 
-    /** The key of the configuration. e.g. /tmp/lastaflute/harbor */
+    /** The key of the configuration. e.g. /tmp/lastaflute/paradeplaza */
     String LOG_FILE_BASEDIR = "log.file.basedir";
 
     /** The key of the configuration. e.g. true */
@@ -59,7 +59,7 @@ public interface HarborEnv {
     /** The key of the configuration. e.g. returnpath@docksidestage.org */
     String MAIL_RETURN_PATH = "mail.return.path";
 
-    /** The key of the configuration. e.g. harbor-support@annie.example.com */
+    /** The key of the configuration. e.g. paradeplaza-support@annie.example.com */
     String MAIL_ADDRESS_SUPPORT = "mail.address.support";
 
     /** The key of the configuration. e.g. org.h2.Driver */
@@ -77,7 +77,7 @@ public interface HarborEnv {
     /** The key of the configuration. e.g. 10 */
     String JDBC_CONNECTION_POOLING_SIZE = "jdbc.connection.pooling.size";
 
-    /** The key of the configuration. e.g. localhost:8090/harbor */
+    /** The key of the configuration. e.g. localhost:8090/paradeplaza */
     String SERVER_DOMAIN = "server.domain";
 
     /**
@@ -179,7 +179,7 @@ public interface HarborEnv {
 
     /**
      * Get the value for the key 'log.file.basedir'. <br>
-     * The value is, e.g. /tmp/lastaflute/harbor <br>
+     * The value is, e.g. /tmp/lastaflute/paradeplaza <br>
      * comment: The log file basedir
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
@@ -227,8 +227,8 @@ public interface HarborEnv {
 
     /**
      * Get the value for the key 'mail.address.support'. <br>
-     * The value is, e.g. harbor-support@annie.example.com <br>
-     * comment: Mail Address for Harbor Support
+     * The value is, e.g. paradeplaza-support@annie.example.com <br>
+     * comment: Mail Address for Paradeplaza Support
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
     String getMailAddressSupport();
@@ -284,7 +284,7 @@ public interface HarborEnv {
 
     /**
      * Get the value for the key 'server.domain'. <br>
-     * The value is, e.g. localhost:8090/harbor <br>
+     * The value is, e.g. localhost:8090/paradeplaza <br>
      * comment: domain to access this application from internet, e.g. for registration mail
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
@@ -294,105 +294,105 @@ public interface HarborEnv {
      * The simple implementation for configuration.
      * @author FreeGen
      */
-    public static class SimpleImpl extends ObjectiveConfig implements HarborEnv {
+    public static class SimpleImpl extends ObjectiveConfig implements ParadeplazaEnv {
 
         /** The serial version UID for object serialization. (Default) */
         private static final long serialVersionUID = 1L;
 
         public String getLastaDiSmartDeployMode() {
-            return get(HarborEnv.lasta_di_SMART_DEPLOY_MODE);
+            return get(ParadeplazaEnv.lasta_di_SMART_DEPLOY_MODE);
         }
 
         public String getDevelopmentHere() {
-            return get(HarborEnv.DEVELOPMENT_HERE);
+            return get(ParadeplazaEnv.DEVELOPMENT_HERE);
         }
 
         public boolean isDevelopmentHere() {
-            return is(HarborEnv.DEVELOPMENT_HERE);
+            return is(ParadeplazaEnv.DEVELOPMENT_HERE);
         }
 
         public String getEnvironmentTitle() {
-            return get(HarborEnv.ENVIRONMENT_TITLE);
+            return get(ParadeplazaEnv.ENVIRONMENT_TITLE);
         }
 
         public String getFrameworkDebug() {
-            return get(HarborEnv.FRAMEWORK_DEBUG);
+            return get(ParadeplazaEnv.FRAMEWORK_DEBUG);
         }
 
         public boolean isFrameworkDebug() {
-            return is(HarborEnv.FRAMEWORK_DEBUG);
+            return is(ParadeplazaEnv.FRAMEWORK_DEBUG);
         }
 
         public String getTimeAdjustTimeMillis() {
-            return get(HarborEnv.TIME_ADJUST_TIME_MILLIS);
+            return get(ParadeplazaEnv.TIME_ADJUST_TIME_MILLIS);
         }
 
         public Long getTimeAdjustTimeMillisAsLong() {
-            return getAsLong(HarborEnv.TIME_ADJUST_TIME_MILLIS);
+            return getAsLong(ParadeplazaEnv.TIME_ADJUST_TIME_MILLIS);
         }
 
         public String getLogLevel() {
-            return get(HarborEnv.LOG_LEVEL);
+            return get(ParadeplazaEnv.LOG_LEVEL);
         }
 
         public String getLogConsoleLevel() {
-            return get(HarborEnv.LOG_CONSOLE_LEVEL);
+            return get(ParadeplazaEnv.LOG_CONSOLE_LEVEL);
         }
 
         public String getLogFileBasedir() {
-            return get(HarborEnv.LOG_FILE_BASEDIR);
+            return get(ParadeplazaEnv.LOG_FILE_BASEDIR);
         }
 
         public String getMailSendMock() {
-            return get(HarborEnv.MAIL_SEND_MOCK);
+            return get(ParadeplazaEnv.MAIL_SEND_MOCK);
         }
 
         public boolean isMailSendMock() {
-            return is(HarborEnv.MAIL_SEND_MOCK);
+            return is(ParadeplazaEnv.MAIL_SEND_MOCK);
         }
 
         public String getMailSmtpServerMainHostAndPort() {
-            return get(HarborEnv.MAIL_SMTP_SERVER_MAIN_HOST_AND_PORT);
+            return get(ParadeplazaEnv.MAIL_SMTP_SERVER_MAIN_HOST_AND_PORT);
         }
 
         public String getMailSubjectTestPrefix() {
-            return get(HarborEnv.MAIL_SUBJECT_TEST_PREFIX);
+            return get(ParadeplazaEnv.MAIL_SUBJECT_TEST_PREFIX);
         }
 
         public String getMailReturnPath() {
-            return get(HarborEnv.MAIL_RETURN_PATH);
+            return get(ParadeplazaEnv.MAIL_RETURN_PATH);
         }
 
         public String getMailAddressSupport() {
-            return get(HarborEnv.MAIL_ADDRESS_SUPPORT);
+            return get(ParadeplazaEnv.MAIL_ADDRESS_SUPPORT);
         }
 
         public String getJdbcDriver() {
-            return get(HarborEnv.JDBC_DRIVER);
+            return get(ParadeplazaEnv.JDBC_DRIVER);
         }
 
         public String getJdbcUrl() {
-            return get(HarborEnv.JDBC_URL);
+            return get(ParadeplazaEnv.JDBC_URL);
         }
 
         public String getJdbcUser() {
-            return get(HarborEnv.JDBC_USER);
+            return get(ParadeplazaEnv.JDBC_USER);
         }
 
         public String getJdbcPassword() {
-            return get(HarborEnv.JDBC_PASSWORD);
+            return get(ParadeplazaEnv.JDBC_PASSWORD);
         }
 
         public String getJdbcConnectionPoolingSize() {
-            return get(HarborEnv.JDBC_CONNECTION_POOLING_SIZE);
+            return get(ParadeplazaEnv.JDBC_CONNECTION_POOLING_SIZE);
         }
 
         public Integer getJdbcConnectionPoolingSizeAsInteger() {
-            return getAsInteger(HarborEnv.JDBC_CONNECTION_POOLING_SIZE);
+            return getAsInteger(ParadeplazaEnv.JDBC_CONNECTION_POOLING_SIZE);
         }
 
         public String getServerDomain() {
-            return get(HarborEnv.SERVER_DOMAIN);
+            return get(ParadeplazaEnv.SERVER_DOMAIN);
         }
     }
 }

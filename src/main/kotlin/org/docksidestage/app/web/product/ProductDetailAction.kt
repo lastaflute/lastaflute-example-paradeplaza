@@ -15,10 +15,10 @@
  */
 package org.docksidestage.app.web.product
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.docksidestage.dbflute.exentity.Product
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
@@ -28,7 +28,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class ProductDetailAction : HarborBaseAction() {
+class ProductDetailAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -43,7 +43,7 @@ class ProductDetailAction : HarborBaseAction() {
     fun index(productId: Int?): HtmlResponse {
         val product = selectProduct(productId!!)
         val bean = mappingToBean(product)
-        return asHtml(HarborHtmlPath.path_Product_ProductDetailHtml).renderWith { data -> data.register("product", bean) }
+        return asHtml(ParadeplazaHtmlPath.path_Product_ProductDetailHtml).renderWith { data -> data.register("product", bean) }
     }
 
     // ===================================================================================

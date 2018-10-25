@@ -1,11 +1,11 @@
 package org.docksidestage.app.web.mypage
 
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 
 /**
  * @author jflute
  */
-class MypageActionTest : UnitHarborTestCase() {
+class MypageActionTest : UnitParadeplazaTestCase() {
 
     @Throws(Exception::class)
     override fun setUp() {

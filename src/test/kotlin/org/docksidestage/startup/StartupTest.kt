@@ -17,7 +17,7 @@ package org.docksidestage.startup
 
 import org.dbflute.infra.manage.refresh.DfRefreshResourceRequest
 import org.docksidestage.app.logic.startup.StartupLogic
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import java.io.IOException
 import java.util.*
 import javax.annotation.Resource
@@ -25,7 +25,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class StartupTest : UnitHarborTestCase() {
+class StartupTest : UnitParadeplazaTestCase() {
 
     @Resource
     private lateinit var startupLogic: StartupLogic
@@ -34,7 +34,7 @@ class StartupTest : UnitHarborTestCase() {
     fun test_startup_actually() {
         val domain = "dancingdb.org"
         val serviceName = "mythica"
-        startupLogic.fromHarbor(projectDir, domain, serviceName)
+        startupLogic.fromParadeplaza(projectDir, domain, serviceName)
         refresh(serviceName) // for retry
     }
 

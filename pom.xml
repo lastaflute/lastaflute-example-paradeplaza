@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.docksidestage</groupId>
-	<artifactId>harborkt</artifactId>
+	<artifactId>paradeplaza</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Harbor for Kotlin</name>
-	<description>example project for LastaFlute as single project (with H2)</description>
+	<name>Paradeplaza</name>
+	<description>example project for Kotlin and LastaFlute as single project (with H2)</description>
 	<url>http://dbflute.org/lastaflute</url>
 	<inceptionYear>2015</inceptionYear>
 
@@ -265,7 +265,7 @@
 					</webResources>
 					<archive>
 						<manifest>
-							<mainClass>org.docksidestage.HarborBootKt</mainClass>
+							<mainClass>org.docksidestage.ParadeplazaBootKt</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

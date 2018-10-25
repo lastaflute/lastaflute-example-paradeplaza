@@ -17,11 +17,11 @@ package org.docksidestage.app.web.base
 
 import org.dbflute.optional.OptionalThing
 import org.docksidestage.app.logic.context.AccessContextLogic
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.base.view.HeaderBean
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.mylasta.action.HarborMessages
-import org.docksidestage.mylasta.action.HarborUserBean
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaMessages
+import org.docksidestage.mylasta.action.ParadeplazaUserBean
 import org.lastaflute.db.dbflute.accesscontext.AccessContextArranger
 import org.lastaflute.web.TypicalAction
 import org.lastaflute.web.login.LoginManager
@@ -36,8 +36,8 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-abstract class HarborBaseAction : TypicalAction // has several interfaces for direct use
-(), LaValidatable<HarborMessages>, HarborHtmlPath {
+abstract class ParadeplazaBaseAction : TypicalAction // has several interfaces for direct use
+(), LaValidatable<ParadeplazaMessages>, ParadeplazaHtmlPath {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -49,7 +49,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     @Resource
     private lateinit var accessContextLogic: AccessContextLogic
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     // ===================================================================================
     //                                                                               Hook
@@ -120,7 +120,7 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     //                                            Login Info
     //                                            ----------
     // #app_customize return empty if isLogin is unused
-    override fun getUserBean(): OptionalThing<HarborUserBean> { // application may call, overriding for co-variant
+    override fun getUserBean(): OptionalThing<ParadeplazaUserBean> { // application may call, overriding for co-variant
         return loginAssist.savedUserBean
     }
 
@@ -136,12 +136,12 @@ abstract class HarborBaseAction : TypicalAction // has several interfaces for di
     //                                                                          Validation
     //                                                                          ==========
     @Suppress("CONFLICTING_OVERLOADS")
-    override fun createValidator(): ActionValidator<HarborMessages> { // for co-variant
+    override fun createValidator(): ActionValidator<ParadeplazaMessages> { // for co-variant
         return super.createValidator()
     }
 
-    override fun createMessages(): HarborMessages { // application may call
-        return HarborMessages() // overriding to change return type to concrete-class
+    override fun createMessages(): ParadeplazaMessages { // application may call
+        return ParadeplazaMessages() // overriding to change return type to concrete-class
     }
 
     companion object {

@@ -26,7 +26,7 @@ import java.util.*
 /**
  * @author jflute
  */
-class HarborUserTimeZoneProcessProvider : UserTimeZoneProcessProvider {
+class ParadeplazaUserTimeZoneProcessProvider : UserTimeZoneProcessProvider {
 
     override fun isUseTimeZoneHandling(): Boolean {
         return false

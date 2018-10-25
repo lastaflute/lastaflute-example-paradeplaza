@@ -15,18 +15,18 @@
  */
 package org.docksidestage.mylasta.direction;
 
-import org.docksidestage.mylasta.direction.HarborEnv;
+import org.docksidestage.mylasta.direction.ParadeplazaEnv;
 import org.lastaflute.core.direction.exception.ConfigPropertyNotFoundException;
 
 /**
  * @author FreeGen
  */
-public interface HarborConfig extends HarborEnv {
+public interface ParadeplazaConfig extends ParadeplazaEnv {
 
-    /** The key of the configuration. e.g. harbor */
+    /** The key of the configuration. e.g. paradeplaza */
     String DOMAIN_NAME = "domain.name";
 
-    /** The key of the configuration. e.g. Harbor */
+    /** The key of the configuration. e.g. Paradeplaza */
     String DOMAIN_TITLE = "domain.title";
 
     /** The key of the configuration. e.g. yyyy/MM/dd */
@@ -48,7 +48,7 @@ public interface HarborConfig extends HarborEnv {
     String COOKIE_ETERNAL_EXPIRE = "cookie.eternal.expire";
 
     /** The key of the configuration. e.g. HRB */
-    String COOKIE_REMEMBER_ME_HARBOR_KEY = "cookie.remember.me.harbor.key";
+    String COOKIE_REMEMBER_ME_PARADEPLAZA_KEY = "cookie.remember.me.paradeplaza.key";
 
     /**
      * Get the value of property as {@link String}.
@@ -68,7 +68,7 @@ public interface HarborConfig extends HarborEnv {
 
     /**
      * Get the value for the key 'domain.name'. <br>
-     * The value is, e.g. harbor <br>
+     * The value is, e.g. paradeplaza <br>
      * comment: The name of domain (means this application) as identity
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
@@ -76,7 +76,7 @@ public interface HarborConfig extends HarborEnv {
 
     /**
      * Get the value for the key 'domain.title'. <br>
-     * The value is, e.g. Harbor <br>
+     * The value is, e.g. Paradeplaza <br>
      * comment: The title of domain (means this application) for logging
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
@@ -149,64 +149,64 @@ public interface HarborConfig extends HarborEnv {
     Integer getCookieEternalExpireAsInteger();
 
     /**
-     * Get the value for the key 'cookie.remember.me.harbor.key'. <br>
+     * Get the value for the key 'cookie.remember.me.paradeplaza.key'. <br>
      * The value is, e.g. HRB <br>
-     * comment: The cookie key of remember-me for Harbor #change_it_first
+     * comment: The cookie key of remember-me for Paradeplaza #change_it_first
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
-    String getCookieRememberMeHarborKey();
+    String getCookieRememberMeParadeplazaKey();
 
     /**
      * The simple implementation for configuration.
      * @author FreeGen
      */
-    public static class SimpleImpl extends HarborEnv.SimpleImpl implements HarborConfig {
+    public static class SimpleImpl extends ParadeplazaEnv.SimpleImpl implements ParadeplazaConfig {
 
         /** The serial version UID for object serialization. (Default) */
         private static final long serialVersionUID = 1L;
 
         public String getDomainName() {
-            return get(HarborConfig.DOMAIN_NAME);
+            return get(ParadeplazaConfig.DOMAIN_NAME);
         }
 
         public String getDomainTitle() {
-            return get(HarborConfig.DOMAIN_TITLE);
+            return get(ParadeplazaConfig.DOMAIN_TITLE);
         }
 
         public String getAppStandardDatePattern() {
-            return get(HarborConfig.APP_STANDARD_DATE_PATTERN);
+            return get(ParadeplazaConfig.APP_STANDARD_DATE_PATTERN);
         }
 
         public String getAppStandardDatetimePattern() {
-            return get(HarborConfig.APP_STANDARD_DATETIME_PATTERN);
+            return get(ParadeplazaConfig.APP_STANDARD_DATETIME_PATTERN);
         }
 
         public String getAppStandardTimePattern() {
-            return get(HarborConfig.APP_STANDARD_TIME_PATTERN);
+            return get(ParadeplazaConfig.APP_STANDARD_TIME_PATTERN);
         }
 
         public String getCookieDefaultPath() {
-            return get(HarborConfig.COOKIE_DEFAULT_PATH);
+            return get(ParadeplazaConfig.COOKIE_DEFAULT_PATH);
         }
 
         public String getCookieDefaultExpire() {
-            return get(HarborConfig.COOKIE_DEFAULT_EXPIRE);
+            return get(ParadeplazaConfig.COOKIE_DEFAULT_EXPIRE);
         }
 
         public Integer getCookieDefaultExpireAsInteger() {
-            return getAsInteger(HarborConfig.COOKIE_DEFAULT_EXPIRE);
+            return getAsInteger(ParadeplazaConfig.COOKIE_DEFAULT_EXPIRE);
         }
 
         public String getCookieEternalExpire() {
-            return get(HarborConfig.COOKIE_ETERNAL_EXPIRE);
+            return get(ParadeplazaConfig.COOKIE_ETERNAL_EXPIRE);
         }
 
         public Integer getCookieEternalExpireAsInteger() {
-            return getAsInteger(HarborConfig.COOKIE_ETERNAL_EXPIRE);
+            return getAsInteger(ParadeplazaConfig.COOKIE_ETERNAL_EXPIRE);
         }
 
-        public String getCookieRememberMeHarborKey() {
-            return get(HarborConfig.COOKIE_REMEMBER_ME_HARBOR_KEY);
+        public String getCookieRememberMeParadeplazaKey() {
+            return get(ParadeplazaConfig.COOKIE_REMEMBER_ME_PARADEPLAZA_KEY);
         }
     }
 }

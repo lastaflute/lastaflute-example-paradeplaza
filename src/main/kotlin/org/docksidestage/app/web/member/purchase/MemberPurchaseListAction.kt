@@ -15,7 +15,7 @@
  */
 package org.docksidestage.app.web.member.purchase
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
 import org.lastaflute.web.servlet.request.ResponseManager
@@ -24,7 +24,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MemberPurchaseListAction : HarborBaseAction() {
+class MemberPurchaseListAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute

@@ -25,19 +25,19 @@ import java.util.*
  */
 class StartupLogic {
 
-    fun fromHarbor(projectDir: File, domain: String, serviceName: String) {
+    fun fromParadeplaza(projectDir: File, domain: String, serviceName: String) {
         val packageName = buildPackageName(domain)
-        NewProjectCreator("harbor", projectDir, object : NewProjectCreator.ServiceNameFilter {
+        NewProjectCreator("paradeplaza", projectDir, object : NewProjectCreator.ServiceNameFilter {
             override fun filter(original: String): String {
                 var filtered = original
-                filtered = replace(filtered, buildProjectDirPureName(projectDir), Srl.initUncap(serviceName)) // e.g. lastaflute-example-harbor
-                filtered = replace(filtered, "lastaflute-example-harbor", Srl.initUncap(serviceName)) // just in case
+                filtered = replace(filtered, buildProjectDirPureName(projectDir), Srl.initUncap(serviceName)) // e.g. lastaflute-example-paradeplaza
+                filtered = replace(filtered, "lastaflute-example-paradeplaza", Srl.initUncap(serviceName)) // just in case
                 filtered = replace(filtered, "maihamadb", Srl.initUncap(serviceName) + if (!serviceName.endsWith("db")) "db" else "")
                 filtered = replace(filtered, "org/docksidestage", replace(packageName, ".", "/")) // for file path
                 filtered = replace(filtered, "docksidestage.org", domain)
                 filtered = replace(filtered, "org.docksidestage", packageName)
-                filtered = replace(filtered, "Harbor", Srl.initCap(serviceName))
-                filtered = replace(filtered, "harbor", Srl.initUncap(serviceName))
+                filtered = replace(filtered, "Paradeplaza", Srl.initCap(serviceName))
+                filtered = replace(filtered, "paradeplaza", Srl.initUncap(serviceName))
                 filtered = replace(filtered, "new JettyBoot(8090, ", "new JettyBoot(9001, ")
                 filtered = replace(filtered, "new TomcatBoot(8090, ", "new TomcatBoot(9001, ")
                 return filtered

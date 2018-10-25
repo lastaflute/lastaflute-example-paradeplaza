@@ -3,8 +3,8 @@ package org.docksidestage.app.web.startup
 import org.dbflute.util.DfResourceUtil
 import org.dbflute.util.Srl
 import org.docksidestage.app.logic.startup.StartupLogic
-import org.docksidestage.app.web.base.HarborBaseAction
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
@@ -16,7 +16,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class StartupAction : HarborBaseAction() {
+class StartupAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -33,18 +33,18 @@ class StartupAction : HarborBaseAction() {
     //                                                                             =======
     @Execute
     fun index(): HtmlResponse {
-        return asHtml(HarborHtmlPath.path_Startup_StartupHtml)
+        return asHtml(ParadeplazaHtmlPath.path_Startup_StartupHtml)
     }
 
     @Execute
     fun create(form: StartupForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Startup_StartupHtml) })
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Startup_StartupHtml) })
 
         val projectDir = projectDir
-        startupLogic.fromHarbor(projectDir, form.domain!!, form.serviceName!!)
+        startupLogic.fromParadeplaza(projectDir, form.domain!!, form.serviceName!!)
 
         val bean = mappingToBean(form, projectDir)
-        return asHtml(HarborHtmlPath.path_Startup_StartupHtml).renderWith { data -> data.register("bean", bean) }
+        return asHtml(ParadeplazaHtmlPath.path_Startup_StartupHtml).renderWith { data -> data.register("bean", bean) }
     }
 
     private fun mappingToBean(form: StartupForm, projectDir: File): StartupBean {

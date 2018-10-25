@@ -24,7 +24,7 @@ import org.dbflute.jetty.JettyBoot
 fun isDevelopment(): Boolean = System.getProperty("lasta.env") == null
 
 fun main(args: Array<String>) {
-    // e.g. java -Dlasta.env=production -jar harbor.war
-    JettyBoot(8090, "/harbor").asDevelopment(isDevelopment()).bootAwait()
+    // e.g. java -Dlasta.env=production -jar paradeplaza.war
+    JettyBoot(8090, "/paradeplaza").asDevelopment(isDevelopment()).bootAwait()
 }
 

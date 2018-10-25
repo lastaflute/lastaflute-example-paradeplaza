@@ -23,14 +23,14 @@
 #
 map:{
     # your service name, camel case, initial uncapitalised
-    ; serviceName = harbor
+    ; serviceName = paradeplaza
 
     # package for your domain name, e.g. com.example
     ; domainPackage = org.docksidestage
 
     # settings for web applications
     ; appMap = map:{
-        ; harbor = map:{
+        ; paradeplaza = map:{
             ; path = ..
             ; freeGenList = list:{ env ; config ; label ; message ; mail ; template ; html ; doc ; appcls ; namedcls }
             ; propertiesHtmlList = list:{ env ; config ; label ; message }
@@ -39,7 +39,7 @@ map:{
 
     # you can override (several) default settings like this:
     #; overrideMap = map:{
-    #    ; harbor.freeGen.mail.targetDir = ./playsql/data/mail
+    #    ; paradeplaza.freeGen.mail.targetDir = ./playsql/data/mail
     #}
 }
 # ----------------/

@@ -16,10 +16,10 @@
 package org.docksidestage.app.web.mypage
 
 import org.dbflute.cbean.result.ListResultBean
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.docksidestage.dbflute.exentity.Product
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
 import java.util.stream.Collectors
@@ -28,7 +28,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MypageAction : HarborBaseAction() {
+class MypageAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -43,7 +43,7 @@ class MypageAction : HarborBaseAction() {
     fun index(): HtmlResponse {
         val recentProducts = mappingToProducts(selectRecentProductList())
         val highPriceProducts = mappingToProducts(selectHighPriceProductList())
-        return asHtml(HarborHtmlPath.path_Mypage_MypageHtml).renderWith { data ->
+        return asHtml(ParadeplazaHtmlPath.path_Mypage_MypageHtml).renderWith { data ->
             data.register("recentProducts", recentProducts)
             data.register("highPriceProducts", highPriceProducts)
         }

@@ -15,11 +15,11 @@
  */
 package org.docksidestage.app.web.signin
 
-import org.docksidestage.app.web.base.HarborBaseAction
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.mypage.MypageAction
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.mylasta.action.HarborMessages
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaMessages
 import org.lastaflute.core.util.LaStringUtil
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.credential.UserPasswordCredential
@@ -29,13 +29,13 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class SigninAction : HarborBaseAction() {
+class SigninAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     // ===================================================================================
     //                                                                             Execute
@@ -44,19 +44,19 @@ class SigninAction : HarborBaseAction() {
     fun index(): HtmlResponse {
         return if (userBean.isPresent) {
             redirect(MypageAction::class.java)
-        } else asHtml(HarborHtmlPath.path_Signin_SigninHtml)
+        } else asHtml(ParadeplazaHtmlPath.path_Signin_SigninHtml)
     }
 
     @Execute
     fun signin(form: SigninForm): HtmlResponse {
         validate(form, { messages -> moreValidate(form, messages) }, {
             form.clearSecurityInfo()
-            asHtml(HarborHtmlPath.path_Signin_SigninHtml)
+            asHtml(ParadeplazaHtmlPath.path_Signin_SigninHtml)
         })
         return loginAssist.loginRedirect(createCredential(form), { op -> op.rememberMe(form.rememberMe) }, { redirect(MypageAction::class.java) })
     }
 
-    private fun moreValidate(form: SigninForm, messages: HarborMessages) {
+    private fun moreValidate(form: SigninForm, messages: ParadeplazaMessages) {
         if (LaStringUtil.isNotEmpty(form.account) && LaStringUtil.isNotEmpty(form.password)) {
             if (!loginAssist.checkUserLoginable(createCredential(form))) {
                 messages.addErrorsLoginFailure("account")

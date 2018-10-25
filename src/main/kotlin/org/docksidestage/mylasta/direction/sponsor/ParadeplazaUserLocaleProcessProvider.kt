@@ -26,7 +26,7 @@ import java.util.*
 /**
  * @author jflute
  */
-class HarborUserLocaleProcessProvider : UserLocaleProcessProvider {
+class ParadeplazaUserLocaleProcessProvider : UserLocaleProcessProvider {
 
     override fun isAcceptCookieLocale(): Boolean {
         return false

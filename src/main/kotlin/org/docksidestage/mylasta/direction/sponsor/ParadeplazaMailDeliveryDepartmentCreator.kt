@@ -27,7 +27,7 @@ import org.dbflute.mail.send.supplement.label.SMailLabelStrategy
 import org.dbflute.optional.OptionalThing
 import org.dbflute.util.DfStringUtil
 import org.dbflute.util.Srl
-import org.docksidestage.mylasta.direction.HarborConfig
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
 import org.lastaflute.core.magic.async.AsyncManager
 import org.lastaflute.core.magic.async.ConcurrentAsyncCall
 import org.lastaflute.core.message.MessageManager
@@ -37,7 +37,7 @@ import java.util.*
 /**
  * @author jflute
  */
-class HarborMailDeliveryDepartmentCreator(protected val config: HarborConfig) {
+class ParadeplazaMailDeliveryDepartmentCreator(protected val config: ParadeplazaConfig) {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========

@@ -1,23 +1,23 @@
 package org.docksidestage.app.web.signup
 
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.mypage.MypageAction
 import org.docksidestage.dbflute.exbhv.MemberBhv
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 import javax.annotation.Resource
 
 /**
  * @author jflute
  */
-class SignupActionTest : UnitHarborTestCase() {
+class SignupActionTest : UnitParadeplazaTestCase() {
 
     @Resource
     private lateinit var memberBhv: MemberBhv
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     fun test_index_success() {
         // ## Arrange ##
@@ -29,7 +29,7 @@ class SignupActionTest : UnitHarborTestCase() {
 
         // ## Assert ##
         val htmlData = validateHtmlData(response)
-        htmlData.assertHtmlForward(HarborHtmlPath.path_Signup_SignupHtml)
+        htmlData.assertHtmlForward(ParadeplazaHtmlPath.path_Signup_SignupHtml)
     }
 
     fun test_signup_success() {

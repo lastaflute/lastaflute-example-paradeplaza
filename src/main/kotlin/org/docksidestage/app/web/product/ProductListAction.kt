@@ -17,11 +17,11 @@ package org.docksidestage.app.web.product
 
 import org.dbflute.cbean.result.PagingResultBean
 import org.dbflute.optional.OptionalThing
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.base.paging.PagingAssist
 import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.docksidestage.dbflute.exentity.Product
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
@@ -32,7 +32,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class ProductListAction : HarborBaseAction() {
+class ProductListAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -47,10 +47,10 @@ class ProductListAction : HarborBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: ProductSearchForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Product_ProductListHtml) })
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
         val page = selectProductPage(pageNumber.orElse(1), form)
         val beans = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
-        return asHtml(HarborHtmlPath.path_Product_ProductListHtml).renderWith { data ->
+        return asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml).renderWith { data ->
             data.register("beans", beans)
             pagingAssist.registerPagingNavi(data, page, form)
         }

@@ -15,24 +15,20 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import org.docksidestage.mylasta.direction.HarborConfig
-import org.lastaflute.core.security.InvertibleCryptographer
-import org.lastaflute.web.servlet.cookie.CookieResourceProvider
+import org.dbflute.util.DfTypeUtil
+import org.lastaflute.web.path.ActionAdjustmentProvider
 
 /**
  * @author jflute
  */
-class HarborCookieResourceProvider(protected val config: HarborConfig, protected val cookieCipher: InvertibleCryptographer) : CookieResourceProvider {
+class ParadeplazaActionAdjustmentProvider : ActionAdjustmentProvider {
 
-    override fun provideDefaultPath(): String {
-        return config.cookieDefaultPath
-    }
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // you can adjust your actions by overriding
+    // default methods defined at the interface
+    // _/_/_/_/_/_/_/_/_/_/
 
-    override fun provideDefaultExpire(): Int? {
-        return config.cookieDefaultExpireAsInteger
-    }
-
-    override fun provideCipher(): InvertibleCryptographer {
-        return cookieCipher
+    override fun toString(): String {
+        return DfTypeUtil.toClassTitle(this) + ":{}"
     }
 }

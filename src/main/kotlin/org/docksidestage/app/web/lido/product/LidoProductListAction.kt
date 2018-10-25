@@ -17,7 +17,7 @@ package org.docksidestage.app.web.lido.product
 
 import org.dbflute.cbean.result.PagingResultBean
 import org.dbflute.optional.OptionalThing
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.base.paging.PagingAssist
 import org.docksidestage.app.web.base.paging.SearchPagingResult
 import org.docksidestage.dbflute.exbhv.ProductBhv
@@ -37,7 +37,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class LidoProductListAction : HarborBaseAction() {
+class LidoProductListAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute

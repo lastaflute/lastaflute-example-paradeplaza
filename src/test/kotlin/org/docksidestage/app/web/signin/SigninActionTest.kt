@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.web.signin
 
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.mypage.MypageAction
 import org.docksidestage.dbflute.exbhv.MemberLoginBhv
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.mylasta.action.HarborMessages
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaMessages
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 import org.lastaflute.core.time.TimeManager
 import org.lastaflute.web.validation.Required
@@ -29,14 +29,14 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class SigninActionTest : UnitHarborTestCase() {
+class SigninActionTest : UnitParadeplazaTestCase() {
 
     @Resource
     private lateinit var timeManager: TimeManager
     @Resource
     private lateinit var memberLoginBhv: MemberLoginBhv
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     // ===================================================================================
     //                                                                               Basic
@@ -81,7 +81,7 @@ class SigninActionTest : UnitHarborTestCase() {
             data.requiredMessageOf("account", Required::class.java)
             data.requiredMessageOf("password", Required::class.java)
             val htmlData = validateHtmlData(data.hookError())
-            htmlData.assertHtmlForward(HarborHtmlPath.path_Signin_SigninHtml)
+            htmlData.assertHtmlForward(ParadeplazaHtmlPath.path_Signin_SigninHtml)
         }
     }
 
@@ -96,9 +96,9 @@ class SigninActionTest : UnitHarborTestCase() {
         // ## Act ##
         // ## Assert ##
         assertValidationError { action.signin(form) }.handle { data ->
-            data.requiredMessageOf("account", HarborMessages.ERRORS_LOGIN_FAILURE)
+            data.requiredMessageOf("account", ParadeplazaMessages.ERRORS_LOGIN_FAILURE)
             val htmlData = validateHtmlData(data.hookError())
-            htmlData.assertHtmlForward(HarborHtmlPath.path_Signin_SigninHtml)
+            htmlData.assertHtmlForward(ParadeplazaHtmlPath.path_Signin_SigninHtml)
             Assert.assertNull(form.password) // should cleared for security
         }
     }

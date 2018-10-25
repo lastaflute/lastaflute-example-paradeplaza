@@ -15,7 +15,7 @@
  */
 package org.docksidestage.app.web.lido.product
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.docksidestage.dbflute.exentity.Product
 import org.lastaflute.web.Execute
@@ -30,7 +30,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class LidoProductDetailAction : HarborBaseAction() {
+class LidoProductDetailAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute

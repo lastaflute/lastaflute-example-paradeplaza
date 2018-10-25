@@ -1,13 +1,13 @@
 package org.docksidestage.app.web.lido.product
 
 import org.dbflute.optional.OptionalThing
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 
 /**
  * @author jflute
  */
-class LidoProductListActionTest : UnitHarborTestCase() {
+class LidoProductListActionTest : UnitParadeplazaTestCase() {
 
     fun test_index_searchByName() {
         // ## Arrange ##

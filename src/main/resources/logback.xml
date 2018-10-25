@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE logback>
 <!-- _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/ -->
-<!-- Harbor logging settings for All Environments -->
+<!-- Paradeplaza logging settings for All Environments -->
 <!-- _/_/_/_/_/_/_/_/_/_/ -->
 <configuration>
-  <property resource="harbor_env.properties" />
-  <property resource="harbor_env_${lasta.env}.properties" />
-  <property name="domain.name" value="harbor"/>
+  <property resource="paradeplaza_env.properties" />
+  <property resource="paradeplaza_env_${lasta.env}.properties" />
+  <property name="domain.name" value="paradeplaza"/>
   <property name="log.level" value="${log.level:-debug}"/>
   <property name="log.pattern" value="%d [%t] %-5p \\(%C{0}@%M\\(\\):%L\\) - %m%n"/>
   <property name="log.file.basedir" value="${log.file.basedir:-/tmp/lastaflute/undefinedbasedir}"/>

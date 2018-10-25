@@ -15,12 +15,12 @@
  */
 package org.docksidestage.mylasta
 
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 
 /**
  * @author jflute
  */
-class HarborLastaDocTest : UnitHarborTestCase() {
+class ParadeplazaLastaDocTest : UnitParadeplazaTestCase() {
 
     @Throws(Exception::class)
     fun test_document() {

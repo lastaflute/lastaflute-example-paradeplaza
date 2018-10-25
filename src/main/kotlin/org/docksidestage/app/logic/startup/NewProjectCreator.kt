@@ -113,7 +113,7 @@ class NewProjectCreator(
                 canonicalPath.endsWith("lastafluteMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createLastaFluteMapFilter())
                 canonicalPath.endsWith("_env.properties") -> textIO.readFilteringLine(canonicalPath, createEnvPropertiesFilter())
                 canonicalPath.endsWith("pom.xml") -> textIO.readFilteringLine(canonicalPath, createPomXmlFilter())
-                canonicalPath.endsWith("HarborFwAssistantDirector.java") -> textIO.readFilteringLine(canonicalPath, createFwAssistantDirectorFilter())
+                canonicalPath.endsWith("ParadeplazaFwAssistantDirector.java") -> textIO.readFilteringLine(canonicalPath, createFwAssistantDirectorFilter())
                 else -> textIO.readFilteringLine(canonicalPath) { line -> filterServiceName(line) }
             }
             if (filtered == null) { // just in case

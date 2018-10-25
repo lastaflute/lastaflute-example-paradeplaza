@@ -16,7 +16,7 @@
 package org.docksidestage.mylasta.direction.sponsor
 
 import org.dbflute.optional.OptionalThing
-import org.docksidestage.mylasta.direction.sponsor.HarborApiFailureHook.UnifiedFailureResult.FailureErrorPart
+import org.docksidestage.mylasta.direction.sponsor.ParadeplazaApiFailureHook.UnifiedFailureResult.FailureErrorPart
 import org.lastaflute.web.api.ApiFailureHook
 import org.lastaflute.web.api.ApiFailureResource
 import org.lastaflute.web.api.BusinessFailureMapping
@@ -33,7 +33,7 @@ import javax.validation.constraints.NotNull
 /**
  * @author jflute
  */
-class HarborApiFailureHook : ApiFailureHook { // #change_it for handling API failure
+class ParadeplazaApiFailureHook : ApiFailureHook { // #change_it for handling API failure
 
     // ===================================================================================
     //                                                                    Business Failure

@@ -15,8 +15,8 @@
  */
 package org.docksidestage.app.web.signup
 
-import org.docksidestage.app.web.base.HarborBaseAction
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.app.web.mypage.MypageAction
 import org.docksidestage.app.web.signin.SigninAction
 import org.docksidestage.dbflute.exbhv.MemberBhv
@@ -25,9 +25,9 @@ import org.docksidestage.dbflute.exbhv.MemberServiceBhv
 import org.docksidestage.dbflute.exentity.Member
 import org.docksidestage.dbflute.exentity.MemberSecurity
 import org.docksidestage.dbflute.exentity.MemberService
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.mylasta.action.HarborMessages
-import org.docksidestage.mylasta.direction.HarborConfig
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaMessages
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard
 import org.lastaflute.core.mail.Postbox
 import org.lastaflute.core.util.LaStringUtil
@@ -41,7 +41,7 @@ import javax.annotation.Resource
  * @author jflute
  */
 @AllowAnyoneAccess
-class SignupAction : HarborBaseAction() {
+class SignupAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -49,7 +49,7 @@ class SignupAction : HarborBaseAction() {
     @Resource
     private lateinit var postbox: Postbox
     @Resource
-    private lateinit var config: HarborConfig
+    private lateinit var config: ParadeplazaConfig
     @Resource
     private lateinit var memberBhv: MemberBhv
     @Resource
@@ -57,7 +57,7 @@ class SignupAction : HarborBaseAction() {
     @Resource
     private lateinit var memberServiceBhv: MemberServiceBhv
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
     @Resource
     private lateinit var signupTokenAssist: SignupTokenAssist
 
@@ -66,12 +66,12 @@ class SignupAction : HarborBaseAction() {
     //                                                                             =======
     @Execute
     fun index(): HtmlResponse {
-        return asHtml(HarborHtmlPath.path_Signup_SignupHtml).useForm(SignupForm::class.java)
+        return asHtml(ParadeplazaHtmlPath.path_Signup_SignupHtml).useForm(SignupForm::class.java)
     }
 
     @Execute
     fun signup(form: SignupForm): HtmlResponse {
-        validate(form, { messages -> moreValidate(form, messages) }, { asHtml(HarborHtmlPath.path_Signup_SignupHtml) })
+        validate(form, { messages -> moreValidate(form, messages) }, { asHtml(ParadeplazaHtmlPath.path_Signup_SignupHtml) })
         val member = insertProvisionalMember(form)
         val token = signupTokenAssist.saveSignupToken(member)
         sendSignupMail(form, token)
@@ -81,7 +81,7 @@ class SignupAction : HarborBaseAction() {
         }
     }
 
-    private fun moreValidate(form: SignupForm, messages: HarborMessages) {
+    private fun moreValidate(form: SignupForm, messages: ParadeplazaMessages) {
         if (LaStringUtil.isNotEmpty(form.memberAccount)) {
             val count = memberBhv.selectCount { cb -> cb.query().setMemberAccount_Equal(form.memberAccount) }
             if (count > 0) {
@@ -92,7 +92,7 @@ class SignupAction : HarborBaseAction() {
 
     private fun sendSignupMail(form: SignupForm, token: String) {
         WelcomeMemberPostcard.droppedInto(postbox) { postcard ->
-            postcard.setFrom(config.mailAddressSupport, HarborMessages.LABELS_MAIL_SUPPORT_PERSONAL)
+            postcard.setFrom(config.mailAddressSupport, ParadeplazaMessages.LABELS_MAIL_SUPPORT_PERSONAL)
             postcard.addTo(form.memberAccount!! + "@docksidestage.org") // #simple_for_example
             postcard.setDomain(config.serverDomain)
             postcard.setMemberName(form.memberName)

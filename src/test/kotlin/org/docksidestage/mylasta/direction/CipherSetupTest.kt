@@ -1,6 +1,6 @@
 package org.docksidestage.mylasta.direction
 
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 import org.lastaflute.core.security.PrimaryCipher
 import org.lastaflute.web.servlet.cookie.CookieCipher
@@ -9,7 +9,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class CipherSetupTest : UnitHarborTestCase() {
+class CipherSetupTest : UnitParadeplazaTestCase() {
 
     @Resource
     private lateinit var primaryCipher: PrimaryCipher

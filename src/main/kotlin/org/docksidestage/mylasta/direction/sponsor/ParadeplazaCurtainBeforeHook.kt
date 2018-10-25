@@ -25,7 +25,7 @@ import java.util.*
 /**
  * @author jflute
  */
-class HarborCurtainBeforeHook : CurtainBeforeHook {
+class ParadeplazaCurtainBeforeHook : CurtainBeforeHook {
 
     override fun hook(assistantDirector: FwAssistantDirector) {
         processDBFluteSystem()
@@ -39,7 +39,7 @@ class HarborCurtainBeforeHook : CurtainBeforeHook {
 
     protected fun createFinalTimeZoneProvider(): DfFinalTimeZoneProvider {
         return object : DfFinalTimeZoneProvider {
-            protected val provided = HarborUserTimeZoneProcessProvider.centralTimeZone
+            protected val provided = ParadeplazaUserTimeZoneProcessProvider.centralTimeZone
 
             override fun provide(): TimeZone {
                 return provided

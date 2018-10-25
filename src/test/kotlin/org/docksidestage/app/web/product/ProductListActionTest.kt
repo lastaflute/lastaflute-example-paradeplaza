@@ -3,14 +3,14 @@ package org.docksidestage.app.web.product
 import org.dbflute.optional.OptionalThing
 import org.docksidestage.app.web.base.paging.PagingAssist
 import org.docksidestage.app.web.base.paging.PagingNavi
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 
 /**
  * @author jflute
  */
-class ProductListActionTest : UnitHarborTestCase() {
+class ProductListActionTest : UnitParadeplazaTestCase() {
 
     @Throws(Exception::class)
     fun test_index_success_by_productName() {
@@ -26,7 +26,7 @@ class ProductListActionTest : UnitHarborTestCase() {
 
         // ## Assert ##
         val htmlData = validateHtmlData(response)
-        htmlData.assertHtmlForward(HarborHtmlPath.path_Product_ProductListHtml)
+        htmlData.assertHtmlForward(ParadeplazaHtmlPath.path_Product_ProductListHtml)
         htmlData.requiredList("beans", ProductSearchRowBean::class.java).forEach { bean ->
             log(bean)
             assertContainsIgnoreCase(bean.productName!!, form.productName)

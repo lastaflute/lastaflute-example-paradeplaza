@@ -15,7 +15,7 @@
  */
 package org.docksidestage.app.web.base.view
 
-import org.docksidestage.mylasta.action.HarborUserBean
+import org.docksidestage.mylasta.action.ParadeplazaUserBean
 
 /**
  * @author jflute
@@ -33,7 +33,7 @@ class HeaderBean { // #change_it #delete_ifapi
         this.isLogin = false
     }
 
-    constructor(userBean: HarborUserBean) {
+    constructor(userBean: ParadeplazaUserBean) {
         this.memberId = userBean.memberId
         this.memberName = userBean.memberName
         this.isLogin = true

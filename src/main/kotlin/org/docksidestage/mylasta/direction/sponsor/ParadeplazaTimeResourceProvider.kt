@@ -15,14 +15,14 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import org.docksidestage.mylasta.direction.HarborConfig
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
 import org.lastaflute.core.time.TypicalTimeResourceProvider
 import java.util.*
 
 /**
  * @author jflute
  */
-class HarborTimeResourceProvider(protected val config: HarborConfig) : TypicalTimeResourceProvider() {
+class ParadeplazaTimeResourceProvider(protected val config: ParadeplazaConfig) : TypicalTimeResourceProvider() {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -31,7 +31,7 @@ class HarborTimeResourceProvider(protected val config: HarborConfig) : TypicalTi
     //                                                                      Basic Handling
     //                                                                      ==============
     override fun getCentralTimeZone(): TimeZone {
-        return HarborUserTimeZoneProcessProvider.centralTimeZone
+        return ParadeplazaUserTimeZoneProcessProvider.centralTimeZone
     }
 
     // ===================================================================================

@@ -27,7 +27,7 @@ import java.util.function.Function
 /**
  * @author jflute
  */
-class HarborListedClassificationProvider : TypicalListedClassificationProvider() { // basically for HTML response
+class ParadeplazaListedClassificationProvider : TypicalListedClassificationProvider() { // basically for HTML response
 
     @Throws(ProvidedClassificationNotFoundException::class)
     override fun chooseClassificationFinder(projectName: String): Function<String, ClassificationMeta> {

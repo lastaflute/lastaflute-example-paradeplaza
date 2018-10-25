@@ -2,6 +2,6 @@
 <!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
 	"http://dbflute.org/meta/lastadi10.dtd">
 <components>
-	<component name="assistantDirector" class="org.docksidestage.mylasta.direction.HarborFwAssistantDirector"/>
-	<component name="harborConfig" class="org.docksidestage.mylasta.direction.HarborConfig$SimpleImpl"/>
+	<component name="assistantDirector" class="org.docksidestage.mylasta.direction.ParadeplazaFwAssistantDirector"/>
+	<component name="paradeplazaConfig" class="org.docksidestage.mylasta.direction.ParadeplazaConfig$SimpleImpl"/>
 </components>

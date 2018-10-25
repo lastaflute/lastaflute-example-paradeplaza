@@ -1,6 +1,6 @@
 LidoIsle
 =======================
-Client for Maihama Harbor
+Client for Maihama Paradeplaza
 
 # How to set up
 1. (install node, gulp, bower if non-existent in your computer)

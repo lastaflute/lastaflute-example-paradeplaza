@@ -2,8 +2,8 @@ package org.docksidestage.app.web.member
 
 import org.docksidestage.dbflute.allcommon.CDef
 import org.docksidestage.dbflute.exbhv.MemberBhv
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.unit.UnitParadeplazaTestCase
 import org.junit.Assert
 import org.lastaflute.web.token.exception.DoubleSubmittedRequestException
 import java.time.LocalDate
@@ -12,7 +12,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MemberEditActionTest : UnitHarborTestCase() {
+class MemberEditActionTest : UnitParadeplazaTestCase() {
 
     @Resource
     private lateinit var memberBhv: MemberBhv
@@ -32,7 +32,7 @@ class MemberEditActionTest : UnitHarborTestCase() {
 
         // ## Assert ##
         val htmlData = validateHtmlData(response)
-        htmlData.assertHtmlForward(HarborHtmlPath.path_Member_MemberEditHtml)
+        htmlData.assertHtmlForward(ParadeplazaHtmlPath.path_Member_MemberEditHtml)
         val form = htmlData.requiredPushedForm(MemberEditForm::class.java)
         Assert.assertEquals(member.memberName, form.memberName)
         assertTokenSaved(action.javaClass)

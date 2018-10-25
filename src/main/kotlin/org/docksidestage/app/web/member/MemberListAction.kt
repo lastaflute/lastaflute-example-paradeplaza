@@ -17,11 +17,11 @@ package org.docksidestage.app.web.member
 
 import org.dbflute.cbean.result.PagingResultBean
 import org.dbflute.optional.OptionalThing
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.base.paging.PagingAssist
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exentity.Member
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.core.util.LaStringUtil
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
@@ -30,7 +30,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MemberListAction : HarborBaseAction() {
+class MemberListAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -45,10 +45,10 @@ class MemberListAction : HarborBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: MemberSearchForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Member_MemberListHtml) })
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml) })
         val page = selectMemberPage(pageNumber.orElse(1), form)
         val beans = page.mappingList { member -> mappingToBean(member) }
-        return asHtml(HarborHtmlPath.path_Member_MemberListHtml).renderWith { data ->
+        return asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml).renderWith { data ->
             data.register("beans", beans)
             pagingAssist.registerPagingNavi(data, page, form)
         }

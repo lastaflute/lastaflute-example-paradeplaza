@@ -15,20 +15,9 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import org.dbflute.util.DfTypeUtil
-import org.lastaflute.web.path.ActionAdjustmentProvider
+import org.lastaflute.core.json.JsonResourceProvider
 
 /**
  * @author jflute
  */
-class HarborActionAdjustmentProvider : ActionAdjustmentProvider {
-
-    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // you can adjust your actions by overriding
-    // default methods defined at the interface
-    // _/_/_/_/_/_/_/_/_/_/
-
-    override fun toString(): String {
-        return DfTypeUtil.toClassTitle(this) + ":{}"
-    }
-}
+class ParadeplazaJsonResourceProvider : JsonResourceProvider

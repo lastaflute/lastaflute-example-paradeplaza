@@ -15,11 +15,11 @@
  */
 package org.docksidestage.app.web.member
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.allcommon.CDef
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exentity.Member
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.core.time.TimeManager
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
@@ -28,7 +28,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MemberAddAction : HarborBaseAction() {
+class MemberAddAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -44,7 +44,7 @@ class MemberAddAction : HarborBaseAction() {
     @Execute
     fun index(): HtmlResponse {
         saveToken()
-        return asHtml(HarborHtmlPath.path_Member_MemberAddHtml).useForm(MemberAddForm::class.java) { op ->
+        return asHtml(ParadeplazaHtmlPath.path_Member_MemberAddHtml).useForm(MemberAddForm::class.java) { op ->
             op.setup { form ->
                 form.memberStatus = CDef.MemberStatus.Provisional // as default
             }
@@ -53,8 +53,8 @@ class MemberAddAction : HarborBaseAction() {
 
     @Execute
     fun register(form: MemberAddForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Member_MemberAddHtml) })
-        verifyToken { asHtml(HarborHtmlPath.path_Error_ShowErrorsHtml) }
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberAddHtml) })
+        verifyToken { asHtml(ParadeplazaHtmlPath.path_Error_ShowErrorsHtml) }
         insertMember(form)
         return redirect(MemberListAction::class.java)
     }

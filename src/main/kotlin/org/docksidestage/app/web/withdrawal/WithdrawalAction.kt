@@ -1,13 +1,13 @@
 package org.docksidestage.app.web.withdrawal
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.signout.SignoutAction
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exbhv.MemberWithdrawalBhv
 import org.docksidestage.dbflute.exentity.Member
 import org.docksidestage.dbflute.exentity.MemberWithdrawal
-import org.docksidestage.mylasta.action.HarborHtmlPath
-import org.docksidestage.mylasta.action.HarborMessages
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaMessages
 import org.lastaflute.core.time.TimeManager
 import org.lastaflute.core.util.LaStringUtil
 import org.lastaflute.web.Execute
@@ -18,7 +18,7 @@ import javax.annotation.Resource
  * @author annie_pocket
  * @author jflute
  */
-class WithdrawalAction : HarborBaseAction() {
+class WithdrawalAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -44,7 +44,7 @@ class WithdrawalAction : HarborBaseAction() {
         return asConfirmHtml()
     }
 
-    private fun moreValidation(form: WithdrawalForm, messages: HarborMessages) {
+    private fun moreValidation(form: WithdrawalForm, messages: ParadeplazaMessages) {
         if (form.selectedReason == null && LaStringUtil.isEmpty(form.reasonInput)) {
             messages.addConstraintsRequiredMessage("selectedReason")
         }
@@ -82,10 +82,10 @@ class WithdrawalAction : HarborBaseAction() {
     //                                                                        Assist Logic
     //                                                                        ============
     private fun asEntryHtml(): HtmlResponse {
-        return asHtml(HarborHtmlPath.path_Withdrawal_WithdrawalEntryHtml)
+        return asHtml(ParadeplazaHtmlPath.path_Withdrawal_WithdrawalEntryHtml)
     }
 
     private fun asConfirmHtml(): HtmlResponse {
-        return asHtml(HarborHtmlPath.path_Withdrawal_WithdrawalConfirmHtml)
+        return asHtml(ParadeplazaHtmlPath.path_Withdrawal_WithdrawalConfirmHtml)
     }
 }

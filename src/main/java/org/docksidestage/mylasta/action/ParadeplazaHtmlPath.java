@@ -21,7 +21,7 @@ import org.lastaflute.web.response.next.HtmlNext;
  * The path definition of HTML.
  * @author FreeGen
  */
-public interface HarborHtmlPath {
+public interface ParadeplazaHtmlPath {
 
     /** The path of the HTML: /error/show_errors.html */
     HtmlNext path_Error_ShowErrorsHtml = new HtmlNext("/error/show_errors.html");

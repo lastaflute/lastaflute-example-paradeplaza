@@ -23,8 +23,8 @@ import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exbhv.MemberLoginBhv
 import org.docksidestage.dbflute.exentity.Member
 import org.docksidestage.dbflute.exentity.MemberLogin
-import org.docksidestage.mylasta.action.HarborUserBean
-import org.docksidestage.mylasta.direction.HarborConfig
+import org.docksidestage.mylasta.action.ParadeplazaUserBean
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
 import org.lastaflute.core.magic.async.AsyncManager
 import org.lastaflute.core.time.TimeManager
 import org.lastaflute.db.jta.stage.TransactionStage
@@ -37,7 +37,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #change_it also UserBean
+class ParadeplazaLoginAssist : TypicalLoginAssist<Int, ParadeplazaUserBean, Member> // #change_it also UserBean
 (), PrimaryLoginManager { // #app_customize
 
     // ===================================================================================
@@ -50,7 +50,7 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     @Resource
     private lateinit var transactionStage: TransactionStage
     @Resource
-    private lateinit var config: HarborConfig
+    private lateinit var config: ParadeplazaConfig
     @Resource
     private lateinit var memberBhv: MemberBhv
     @Resource
@@ -78,19 +78,19 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     // ===================================================================================
     //                                                                       Login Process
     //                                                                       =============
-    override fun createUserBean(userEntity: Member): HarborUserBean {
-        return HarborUserBean(userEntity)
+    override fun createUserBean(userEntity: Member): ParadeplazaUserBean {
+        return ParadeplazaUserBean(userEntity)
     }
 
     override fun getCookieRememberMeKey(): OptionalThing<String> {
-        return OptionalThing.of(config.cookieRememberMeHarborKey)
+        return OptionalThing.of(config.cookieRememberMeParadeplazaKey)
     }
 
     override fun toTypedUserId(userKey: String): Int? {
         return Integer.valueOf(userKey)
     }
 
-    override fun saveLoginHistory(member: Member, userBean: HarborUserBean, option: LoginSpecifiedOption) {
+    override fun saveLoginHistory(member: Member, userBean: ParadeplazaUserBean, option: LoginSpecifiedOption) {
         asyncManager.async { transactionStage.requiresNew<Any> { tx -> insertLogin(member) } }
     }
 
@@ -106,8 +106,8 @@ class HarborLoginAssist : TypicalLoginAssist<Int, HarborUserBean, Member> // #ch
     // ===================================================================================
     //                                                                      Login Resource
     //                                                                      ==============
-    override fun getUserBeanType(): Class<HarborUserBean> {
-        return HarborUserBean::class.java
+    override fun getUserBeanType(): Class<ParadeplazaUserBean> {
+        return ParadeplazaUserBean::class.java
     }
 
     override fun getLoginActionType(): Class<*> {

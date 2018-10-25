@@ -15,7 +15,7 @@
  */
 package org.docksidestage.app.web
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.mypage.MypageAction
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
@@ -25,7 +25,7 @@ import org.lastaflute.web.response.HtmlResponse
  * @author jflute
  */
 @AllowAnyoneAccess
-class RootAction : HarborBaseAction() {
+class RootAction : ParadeplazaBaseAction() {
 
     @Execute
     fun index(): HtmlResponse {

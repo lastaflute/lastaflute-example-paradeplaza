@@ -15,16 +15,16 @@
  */
 package org.docksidestage.app.web.lido.auth
 
-import org.docksidestage.app.web.base.HarborBaseAction
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exbhv.MemberSecurityBhv
 import org.docksidestage.dbflute.exbhv.MemberServiceBhv
 import org.docksidestage.dbflute.exentity.Member
 import org.docksidestage.dbflute.exentity.MemberSecurity
 import org.docksidestage.dbflute.exentity.MemberService
-import org.docksidestage.mylasta.action.HarborMessages
-import org.docksidestage.mylasta.direction.HarborConfig
+import org.docksidestage.mylasta.action.ParadeplazaMessages
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard
 import org.lastaflute.core.mail.Postbox
 import org.lastaflute.core.security.PrimaryCipher
@@ -44,7 +44,7 @@ import javax.annotation.Resource
  * @author s.tadokoro
  * @author jflute
  */
-class LidoAuthAction : HarborBaseAction() {
+class LidoAuthAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -58,7 +58,7 @@ class LidoAuthAction : HarborBaseAction() {
     @Resource
     private lateinit var sessionManager: SessionManager
     @Resource
-    private lateinit var config: HarborConfig
+    private lateinit var config: ParadeplazaConfig
     @Resource
     private lateinit var memberBhv: MemberBhv
     @Resource
@@ -66,7 +66,7 @@ class LidoAuthAction : HarborBaseAction() {
     @Resource
     private lateinit var memberServiceBhv: MemberServiceBhv
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     // ===================================================================================
     //                                                                             Execute
@@ -102,7 +102,7 @@ class LidoAuthAction : HarborBaseAction() {
         return JsonResponse.asEmptyBody()
     }
 
-    private fun moreValidate(body: SignupBody, messages: HarborMessages) {
+    private fun moreValidate(body: SignupBody, messages: ParadeplazaMessages) {
         if (LaStringUtil.isNotEmpty(body.memberAccount)) {
             val count = memberBhv.selectCount { cb -> cb.query().setMemberAccount_Equal(body.memberAccount) }
             if (count > 0) {
@@ -119,7 +119,7 @@ class LidoAuthAction : HarborBaseAction() {
 
     private fun sendSignupMail(body: SignupBody, signupToken: String) {
         WelcomeMemberPostcard.droppedInto(postbox) { postcard ->
-            postcard.setFrom(config.mailAddressSupport, "Harbor Support") // #simple_for_example
+            postcard.setFrom(config.mailAddressSupport, "Paradeplaza Support") // #simple_for_example
             postcard.addTo(body.memberAccount!! + "@docksidestage.org") // #simple_for_example
             postcard.setDomain(config.serverDomain)
             postcard.setMemberName(body.memberName)

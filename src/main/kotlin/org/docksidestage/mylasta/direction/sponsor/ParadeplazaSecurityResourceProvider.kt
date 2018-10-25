@@ -22,7 +22,7 @@ import org.lastaflute.core.security.SecurityResourceProvider
 /**
  * @author jflute
  */
-class HarborSecurityResourceProvider(protected val primaryInvertibleCryptographer: InvertibleCryptographer,
+class ParadeplazaSecurityResourceProvider(protected val primaryInvertibleCryptographer: InvertibleCryptographer,
                                      protected val primaryOneWayCryptographer: OneWayCryptographer) : SecurityResourceProvider {
 
     override fun providePrimaryInvertibleCryptographer(): InvertibleCryptographer {

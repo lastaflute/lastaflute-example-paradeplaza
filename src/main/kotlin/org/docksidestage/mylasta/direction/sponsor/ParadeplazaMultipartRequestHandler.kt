@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletRequest
 /**
  * @author modified by jflute (originated in Seasar)
  */
-class HarborMultipartRequestHandler : MultipartRequestHandler {
+class ParadeplazaMultipartRequestHandler : MultipartRequestHandler {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -141,7 +141,7 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
         br.addElement("Too long boundary is treated as 404 because it's thought of as attack.")
         br.addElement("")
         br.addElement("While, you can override the boundary limit size")
-        br.addElement(" in " + HarborMultipartRequestHandler::class.java.simpleName + ".")
+        br.addElement(" in " + ParadeplazaMultipartRequestHandler::class.java.simpleName + ".")
         br.addItem("Content Type")
         br.addElement(contentType)
         br.addItem("Boundary Size")
@@ -387,7 +387,7 @@ class HarborMultipartRequestHandler : MultipartRequestHandler {
         // ===================================================================================
         //                                                                          Definition
         //                                                                          ==========
-        private val logger = LoggerFactory.getLogger(HarborMultipartRequestHandler::class.java)
+        private val logger = LoggerFactory.getLogger(ParadeplazaMultipartRequestHandler::class.java)
         const val DEFAULT_SIZE_MAX = (250 * 1024 * 1024).toLong() // 250MB
         const val DEFAULT_SIZE_THRESHOLD = 256 * 1024 // 250KB
         protected const val CONTEXT_TEMPDIR_KEY = "javax.servlet.context.tempdir"

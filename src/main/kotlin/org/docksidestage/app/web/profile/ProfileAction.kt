@@ -15,11 +15,11 @@
  */
 package org.docksidestage.app.web.profile
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.app.web.profile.ProfileBean.PurchasedProductBean
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exentity.Member
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
 import java.util.stream.Collectors
@@ -29,7 +29,7 @@ import javax.annotation.Resource
  * @author jflute
  * @author deco
  */
-class ProfileAction : HarborBaseAction() {
+class ProfileAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -45,7 +45,7 @@ class ProfileAction : HarborBaseAction() {
         val member = selectMember()
         val bean = mappingToBean(member)
 
-        return asHtml(HarborHtmlPath.path_Profile_ProfileHtml).renderWith { data -> data.register("bean", bean) }
+        return asHtml(ParadeplazaHtmlPath.path_Profile_ProfileHtml).renderWith { data -> data.register("bean", bean) }
     }
 
     // ===================================================================================

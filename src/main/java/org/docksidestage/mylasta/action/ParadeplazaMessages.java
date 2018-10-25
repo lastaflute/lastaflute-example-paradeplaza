@@ -15,14 +15,14 @@
  */
 package org.docksidestage.mylasta.action;
 
-import org.docksidestage.mylasta.action.HarborLabels;
+import org.docksidestage.mylasta.action.ParadeplazaLabels;
 import org.lastaflute.core.message.UserMessage;
 
 /**
  * The keys for message.
  * @author FreeGen
  */
-public class HarborMessages extends HarborLabels {
+public class ParadeplazaMessages extends ParadeplazaLabels {
 
     /** The serial version UID for object serialization. (Default) */
     private static final long serialVersionUID = 1L;
@@ -168,7 +168,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsAssertFalseMessage(String property) {
+    public ParadeplazaMessages addConstraintsAssertFalseMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_AssertFalse_MESSAGE));
         return this;
@@ -182,7 +182,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsAssertTrueMessage(String property) {
+    public ParadeplazaMessages addConstraintsAssertTrueMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_AssertTrue_MESSAGE));
         return this;
@@ -197,7 +197,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsDecimalMaxMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsDecimalMaxMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_DecimalMax_MESSAGE, value));
         return this;
@@ -212,7 +212,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsDecimalMinMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsDecimalMinMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_DecimalMin_MESSAGE, value));
         return this;
@@ -228,7 +228,7 @@ public class HarborMessages extends HarborLabels {
      * @param integer The parameter integer for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsDigitsMessage(String property, String fraction, String integer) {
+    public ParadeplazaMessages addConstraintsDigitsMessage(String property, String fraction, String integer) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Digits_MESSAGE, fraction, integer));
         return this;
@@ -242,7 +242,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsEmailMessage(String property) {
+    public ParadeplazaMessages addConstraintsEmailMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Email_MESSAGE));
         return this;
@@ -256,7 +256,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsFutureMessage(String property) {
+    public ParadeplazaMessages addConstraintsFutureMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Future_MESSAGE));
         return this;
@@ -271,7 +271,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsMaxMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsMaxMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Max_MESSAGE, value));
         return this;
@@ -286,7 +286,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsMinMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsMinMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Min_MESSAGE, value));
         return this;
@@ -300,7 +300,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsNotBlankMessage(String property) {
+    public ParadeplazaMessages addConstraintsNotBlankMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_NotBlank_MESSAGE));
         return this;
@@ -314,7 +314,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsNotEmptyMessage(String property) {
+    public ParadeplazaMessages addConstraintsNotEmptyMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_NotEmpty_MESSAGE));
         return this;
@@ -328,7 +328,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsNotNullMessage(String property) {
+    public ParadeplazaMessages addConstraintsNotNullMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_NotNull_MESSAGE));
         return this;
@@ -342,7 +342,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsNullMessage(String property) {
+    public ParadeplazaMessages addConstraintsNullMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Null_MESSAGE));
         return this;
@@ -356,7 +356,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsPastMessage(String property) {
+    public ParadeplazaMessages addConstraintsPastMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Past_MESSAGE));
         return this;
@@ -370,7 +370,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsPatternMessage(String property) {
+    public ParadeplazaMessages addConstraintsPatternMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Pattern_MESSAGE));
         return this;
@@ -386,7 +386,7 @@ public class HarborMessages extends HarborLabels {
      * @param max The parameter max for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsSizeMessage(String property, String min, String max) {
+    public ParadeplazaMessages addConstraintsSizeMessage(String property, String min, String max) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Size_MESSAGE, min, max));
         return this;
@@ -401,7 +401,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsCreditCardNumberMessage(String property) {
+    public ParadeplazaMessages addConstraintsCreditCardNumberMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_CreditCardNumber_MESSAGE));
         return this;
@@ -416,7 +416,7 @@ public class HarborMessages extends HarborLabels {
      * @param type The parameter type for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsEanMessage(String property, String type) {
+    public ParadeplazaMessages addConstraintsEanMessage(String property, String type) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_EAN_MESSAGE, type));
         return this;
@@ -432,7 +432,7 @@ public class HarborMessages extends HarborLabels {
      * @param max The parameter max for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsLengthMessage(String property, String min, String max) {
+    public ParadeplazaMessages addConstraintsLengthMessage(String property, String min, String max) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Length_MESSAGE, min, max));
         return this;
@@ -447,7 +447,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsLuhnCheckMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsLuhnCheckMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_LuhnCheck_MESSAGE, value));
         return this;
@@ -462,7 +462,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsMod10CheckMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsMod10CheckMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Mod10Check_MESSAGE, value));
         return this;
@@ -477,7 +477,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsMod11CheckMessage(String property, String value) {
+    public ParadeplazaMessages addConstraintsMod11CheckMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Mod11Check_MESSAGE, value));
         return this;
@@ -493,7 +493,7 @@ public class HarborMessages extends HarborLabels {
      * @param value The parameter value for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsModCheckMessage(String property, String modType, String value) {
+    public ParadeplazaMessages addConstraintsModCheckMessage(String property, String modType, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_ModCheck_MESSAGE, modType, value));
         return this;
@@ -508,7 +508,7 @@ public class HarborMessages extends HarborLabels {
      * @param script The parameter script for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsParametersScriptAssertMessage(String property, String script) {
+    public ParadeplazaMessages addConstraintsParametersScriptAssertMessage(String property, String script) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_ParametersScriptAssert_MESSAGE, script));
         return this;
@@ -524,7 +524,7 @@ public class HarborMessages extends HarborLabels {
      * @param max The parameter max for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsRangeMessage(String property, String min, String max) {
+    public ParadeplazaMessages addConstraintsRangeMessage(String property, String min, String max) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Range_MESSAGE, min, max));
         return this;
@@ -538,7 +538,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsSafeHtmlMessage(String property) {
+    public ParadeplazaMessages addConstraintsSafeHtmlMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_SafeHtml_MESSAGE));
         return this;
@@ -553,7 +553,7 @@ public class HarborMessages extends HarborLabels {
      * @param script The parameter script for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsScriptAssertMessage(String property, String script) {
+    public ParadeplazaMessages addConstraintsScriptAssertMessage(String property, String script) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_ScriptAssert_MESSAGE, script));
         return this;
@@ -567,7 +567,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsUrlMessage(String property) {
+    public ParadeplazaMessages addConstraintsUrlMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_URL_MESSAGE));
         return this;
@@ -582,7 +582,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsRequiredMessage(String property) {
+    public ParadeplazaMessages addConstraintsRequiredMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Required_MESSAGE));
         return this;
@@ -597,7 +597,7 @@ public class HarborMessages extends HarborLabels {
      * @param propertyType The parameter propertyType for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeAnyMessage(String property, String propertyType) {
+    public ParadeplazaMessages addConstraintsTypeAnyMessage(String property, String propertyType) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeAny_MESSAGE, propertyType));
         return this;
@@ -611,7 +611,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeIntegerMessage(String property) {
+    public ParadeplazaMessages addConstraintsTypeIntegerMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeInteger_MESSAGE));
         return this;
@@ -625,7 +625,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeLongMessage(String property) {
+    public ParadeplazaMessages addConstraintsTypeLongMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeLong_MESSAGE));
         return this;
@@ -639,7 +639,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeLocalDateMessage(String property) {
+    public ParadeplazaMessages addConstraintsTypeLocalDateMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeLocalDate_MESSAGE));
         return this;
@@ -653,7 +653,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeLocalDateTimeMessage(String property) {
+    public ParadeplazaMessages addConstraintsTypeLocalDateTimeMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeLocalDateTime_MESSAGE));
         return this;
@@ -667,7 +667,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addConstraintsTypeBooleanMessage(String property) {
+    public ParadeplazaMessages addConstraintsTypeBooleanMessage(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_TypeBoolean_MESSAGE));
         return this;
@@ -682,7 +682,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsLoginFailure(String property) {
+    public ParadeplazaMessages addErrorsLoginFailure(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_LOGIN_FAILURE));
         return this;
@@ -696,7 +696,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsAppIllegalTransition(String property) {
+    public ParadeplazaMessages addErrorsAppIllegalTransition(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_APP_ILLEGAL_TRANSITION));
         return this;
@@ -710,7 +710,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsAppDbAlreadyDeleted(String property) {
+    public ParadeplazaMessages addErrorsAppDbAlreadyDeleted(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_APP_DB_ALREADY_DELETED));
         return this;
@@ -724,7 +724,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsAppDbAlreadyUpdated(String property) {
+    public ParadeplazaMessages addErrorsAppDbAlreadyUpdated(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_APP_DB_ALREADY_UPDATED));
         return this;
@@ -738,7 +738,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsAppDbAlreadyExists(String property) {
+    public ParadeplazaMessages addErrorsAppDbAlreadyExists(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_APP_DB_ALREADY_EXISTS));
         return this;
@@ -752,7 +752,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsAppDoubleSubmitRequest(String property) {
+    public ParadeplazaMessages addErrorsAppDoubleSubmitRequest(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_APP_DOUBLE_SUBMIT_REQUEST));
         return this;
@@ -766,7 +766,7 @@ public class HarborMessages extends HarborLabels {
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsSignupAccountAlreadyExists(String property) {
+    public ParadeplazaMessages addErrorsSignupAccountAlreadyExists(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_SIGNUP_ACCOUNT_ALREADY_EXISTS));
         return this;
@@ -782,7 +782,7 @@ public class HarborMessages extends HarborLabels {
      * @param arg1 The parameter arg1 for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsXxxxxxxxxxxxxx(String property, String arg0, String arg1) {
+    public ParadeplazaMessages addErrorsXxxxxxxxxxxxxx(String property, String arg0, String arg1) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_XXXXXXXXXXXXXX, arg0, arg1));
         return this;
@@ -798,7 +798,7 @@ public class HarborMessages extends HarborLabels {
      * @param arg4 The parameter arg4 for message. (NotNull)
      * @return this. (NotNull)
      */
-    public HarborMessages addErrorsYyyyyyyyyyyyyy(String property, String arg1, String arg4) {
+    public ParadeplazaMessages addErrorsYyyyyyyyyyyyyy(String property, String arg1, String arg4) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_YYYYYYYYYYYYYY, arg1, arg4));
         return this;

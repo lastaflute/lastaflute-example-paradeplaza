@@ -21,7 +21,7 @@ import org.lastaflute.core.message.UserMessages;
  * The keys for message.
  * @author FreeGen
  */
-public class HarborLabels extends UserMessages {
+public class ParadeplazaLabels extends UserMessages {
 
     /** The serial version UID for object serialization. (Default) */
     private static final long serialVersionUID = 1L;

@@ -15,10 +15,10 @@
  */
 package org.docksidestage.app.web.member
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.exbhv.MemberBhv
 import org.docksidestage.dbflute.exentity.Member
-import org.docksidestage.mylasta.action.HarborHtmlPath
+import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.core.time.TimeManager
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
@@ -27,7 +27,7 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class MemberEditAction : HarborBaseAction() {
+class MemberEditAction : ParadeplazaBaseAction() {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -44,20 +44,20 @@ class MemberEditAction : HarborBaseAction() {
     fun index(memberId: Int?): HtmlResponse {
         val member = selectMember(memberId)
         saveToken()
-        return asHtml(HarborHtmlPath.path_Member_MemberEditHtml).useForm(MemberEditForm::class.java) { op -> op.setup { form -> mappingToForm(member, form) } }
+        return asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml).useForm(MemberEditForm::class.java) { op -> op.setup { form -> mappingToForm(member, form) } }
     }
 
     @Execute
     fun update(form: MemberEditForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Member_MemberEditHtml) })
-        verifyToken { asHtml(HarborHtmlPath.path_Error_ShowErrorsHtml) }
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
+        verifyToken { asHtml(ParadeplazaHtmlPath.path_Error_ShowErrorsHtml) }
         val member = updateMember(form)
         return redirectById(MemberEditAction::class.java, member.memberId)
     }
 
     @Execute
     fun withdrawal(form: MemberEditForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(HarborHtmlPath.path_Member_MemberEditHtml) })
+        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
         updateMemberToWithdrawal(form)
         return redirect(MemberListAction::class.java)
     }

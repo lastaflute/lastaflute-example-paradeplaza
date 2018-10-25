@@ -21,7 +21,7 @@ import org.lastaflute.web.login.TypicalUserBean
 /**
  * @author jflute
  */
-class HarborUserBean(member: Member) : TypicalUserBean<Int>() { // #change_it also LoginAssist
+class ParadeplazaUserBean(member: Member) : TypicalUserBean<Int>() { // #change_it also LoginAssist
 
     // ===================================================================================
     //                                                                           Attribute

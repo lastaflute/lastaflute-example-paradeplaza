@@ -43,26 +43,26 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-class HarborFwAssistantDirector : CachedFwAssistantDirector() {
+class ParadeplazaFwAssistantDirector : CachedFwAssistantDirector() {
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private lateinit var config: HarborConfig
+    private lateinit var config: ParadeplazaConfig
 
     // ===================================================================================
     //                                                                              Assist
     //                                                                              ======
     override fun prepareAssistDirection(direction: FwAssistDirection) {
-        direction.directConfig(Consumer { nameList -> nameList.add("harbor_config.properties") }, "harbor_env.properties")
+        direction.directConfig(Consumer { nameList -> nameList.add("paradeplaza_config.properties") }, "paradeplaza_env.properties")
     }
 
     // ===================================================================================
     //                                                                               Core
     //                                                                              ======
     override fun prepareCoreDirection(direction: FwCoreDirection) {
-        // this configuration is on harbor_env.properties because this is true only when development
+        // this configuration is on paradeplaza_env.properties because this is true only when development
         direction.directDevelopmentHere(config.isDevelopmentHere)
 
         // titles of the application for logging are from configurations
@@ -82,25 +82,25 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     }
 
     protected fun createCurtainBeforeHook(): CurtainBeforeHook {
-        return HarborCurtainBeforeHook()
+        return ParadeplazaCurtainBeforeHook()
     }
 
     protected fun createSecurityResourceProvider(): SecurityResourceProvider { // #change_it_first
-        val inver = InvertibleCryptographer.createAesCipher("harbor:dockside:")
+        val inver = InvertibleCryptographer.createAesCipher("parade:dockside:")
         val oneWay = OneWayCryptographer.createSha256Cryptographer()
-        return HarborSecurityResourceProvider(inver, oneWay)
+        return ParadeplazaSecurityResourceProvider(inver, oneWay)
     }
 
     protected fun createTimeResourceProvider(): TimeResourceProvider {
-        return HarborTimeResourceProvider(config)
+        return ParadeplazaTimeResourceProvider(config)
     }
 
     protected fun createJsonResourceProvider(): JsonResourceProvider {
-        return HarborJsonResourceProvider()
+        return ParadeplazaJsonResourceProvider()
     }
 
-    protected fun createMailDeliveryDepartmentCreator(): HarborMailDeliveryDepartmentCreator {
-        return HarborMailDeliveryDepartmentCreator(config)
+    protected fun createMailDeliveryDepartmentCreator(): ParadeplazaMailDeliveryDepartmentCreator {
+        return ParadeplazaMailDeliveryDepartmentCreator(config)
     }
 
     // ===================================================================================
@@ -111,7 +111,7 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     }
 
     protected fun createListedClassificationProvider(): ListedClassificationProvider {
-        return HarborListedClassificationProvider()
+        return ParadeplazaListedClassificationProvider()
     }
 
     // ===================================================================================
@@ -121,7 +121,7 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
         direction.directRequest(createUserLocaleProcessProvider(), createUserTimeZoneProcessProvider())
         direction.directCookie(createCookieResourceProvider())
         direction.directAdjustment(createActionAdjustmentProvider())
-        direction.directMessage(Consumer { nameList -> nameList.add("harbor_message") }, "harbor_label")
+        direction.directMessage(Consumer { nameList -> nameList.add("paradeplaza_message") }, "paradeplaza_label")
         direction.directApiCall(createApiFailureHook())
         direction.directCors(CorsHook("http://localhost:5000")) // #change_it
         direction.directHtmlRendering(createHtmlRenderingProvider())
@@ -129,24 +129,24 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     }
 
     protected fun createUserLocaleProcessProvider(): UserLocaleProcessProvider {
-        return HarborUserLocaleProcessProvider()
+        return ParadeplazaUserLocaleProcessProvider()
     }
 
     protected fun createUserTimeZoneProcessProvider(): UserTimeZoneProcessProvider {
-        return HarborUserTimeZoneProcessProvider()
+        return ParadeplazaUserTimeZoneProcessProvider()
     }
 
     protected fun createCookieResourceProvider(): CookieResourceProvider { // #change_it_first
-        val cr = InvertibleCryptographer.createAesCipher("dockside:harbor:")
-        return HarborCookieResourceProvider(config, cr)
+        val cr = InvertibleCryptographer.createAesCipher("dockside:parade:")
+        return ParadeplazaCookieResourceProvider(config, cr)
     }
 
     protected fun createActionAdjustmentProvider(): ActionAdjustmentProvider {
-        return HarborActionAdjustmentProvider()
+        return ParadeplazaActionAdjustmentProvider()
     }
 
     protected fun createApiFailureHook(): ApiFailureHook {
-        return HarborApiFailureHook()
+        return ParadeplazaApiFailureHook()
     }
 
     protected fun createHtmlRenderingProvider(): HtmlRenderingProvider {
@@ -154,6 +154,6 @@ class HarborFwAssistantDirector : CachedFwAssistantDirector() {
     }
 
     protected fun createMultipartResourceProvider(): MultipartResourceProvider {
-        return MultipartResourceProvider { HarborMultipartRequestHandler() }
+        return MultipartResourceProvider { ParadeplazaMultipartRequestHandler() }
     }
 }

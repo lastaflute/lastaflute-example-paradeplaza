@@ -16,13 +16,13 @@
 package org.docksidestage.unit
 
 import org.dbflute.utflute.lastaflute.WebContainerTestCase
-import org.docksidestage.app.web.base.login.HarborLoginAssist
+import org.docksidestage.app.web.base.login.ParadeplazaLoginAssist
 import javax.annotation.Resource
 
 /**
  * Use like this:
  * <pre>
- * YourTest extends [UnitHarborTestCase] {
+ * YourTest extends [UnitParadeplazaTestCase] {
  *
  * public void test_yourMethod() {
  * <span style="color: #3F7E5E">// ## Arrange ##</span>
@@ -39,13 +39,13 @@ import javax.annotation.Resource
 </pre> *
  * @author jflute
  */
-abstract class UnitHarborTestCase : WebContainerTestCase() {
+abstract class UnitParadeplazaTestCase : WebContainerTestCase() {
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private lateinit var loginAssist: HarborLoginAssist
+    private lateinit var loginAssist: ParadeplazaLoginAssist
 
     protected// always exists in database as test data
     val mockLoginUserId: Int

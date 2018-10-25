@@ -16,12 +16,12 @@
 package org.docksidestage.mylasta
 
 import org.dbflute.utflute.lastaflute.police.*
-import org.docksidestage.unit.UnitHarborTestCase
+import org.docksidestage.unit.UnitParadeplazaTestCase
 
 /**
  * @author jflute
  */
-class HarborActionDefTest : UnitHarborTestCase() {
+class ParadeplazaActionDefTest : UnitParadeplazaTestCase() {
 
     @Throws(Exception::class)
     fun test_component() {

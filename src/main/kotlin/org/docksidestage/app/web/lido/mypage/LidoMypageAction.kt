@@ -15,7 +15,7 @@
  */
 package org.docksidestage.app.web.lido.mypage
 
-import org.docksidestage.app.web.base.HarborBaseAction
+import org.docksidestage.app.web.base.ParadeplazaBaseAction
 import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
@@ -29,7 +29,7 @@ import javax.annotation.Resource
  * @author s.tadokoro
  * @author jflute
  */
-class LidoMypageAction : HarborBaseAction() {
+class LidoMypageAction : ParadeplazaBaseAction() {
 
     @Resource
     private lateinit var productBhv: ProductBhv

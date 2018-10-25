@@ -15,9 +15,24 @@
  */
 package org.docksidestage.mylasta.direction.sponsor
 
-import org.lastaflute.core.json.JsonResourceProvider
+import org.docksidestage.mylasta.direction.ParadeplazaConfig
+import org.lastaflute.core.security.InvertibleCryptographer
+import org.lastaflute.web.servlet.cookie.CookieResourceProvider
 
 /**
  * @author jflute
  */
-class HarborJsonResourceProvider : JsonResourceProvider
+class ParadeplazaCookieResourceProvider(protected val config: ParadeplazaConfig, protected val cookieCipher: InvertibleCryptographer) : CookieResourceProvider {
+
+    override fun provideDefaultPath(): String {
+        return config.cookieDefaultPath
+    }
+
+    override fun provideDefaultExpire(): Int? {
+        return config.cookieDefaultExpireAsInteger
+    }
+
+    override fun provideCipher(): InvertibleCryptographer {
+        return cookieCipher
+    }
+}
