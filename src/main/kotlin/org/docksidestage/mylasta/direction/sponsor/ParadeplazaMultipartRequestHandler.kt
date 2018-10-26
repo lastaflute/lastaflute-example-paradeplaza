@@ -277,7 +277,8 @@ class ParadeplazaMultipartRequestHandler : MultipartRequestHandler {
                 item.string
             }
 
-            haveValue = true
+			// no more used so comment out (also unneeded in Java example?)
+            //haveValue = true
         }
         if (request is MultipartRequestWrapper) {
             request.setParameter(name, value)
