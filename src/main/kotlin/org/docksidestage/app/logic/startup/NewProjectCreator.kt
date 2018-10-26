@@ -261,8 +261,8 @@ class NewProjectCreator(
     // ===================================================================================
     //                                                                       Common Filter
     //                                                                       =============
-    protected fun filterJdbcSettings(line: String): String {
-        var line = line
+    protected fun filterJdbcSettings(originalLine: String): String {
+        var line = originalLine
         // e.g. basicInfoMap.dfprop, databaseInfoMap.dfprop, _env.properties
         val toDatabase = "; database = mysql"
         val toDriver = "com.mysql.jdbc.Driver"
