@@ -171,6 +171,7 @@ class ParadeplazaMultipartRequestHandler : MultipartRequestHandler {
     }
 
     @Throws(FileUploadException::class)
+	@Suppress("deprecation")
     protected fun parseRequest(request: HttpServletRequest, upload: ServletFileUpload): List<FileItem> {
         return upload.parseRequest(request)
     }
