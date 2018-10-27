@@ -36,8 +36,20 @@ import javax.annotation.Resource
 /**
  * @author jflute
  */
-abstract class ParadeplazaBaseAction : TypicalAction // has several interfaces for direct use
-(), LaValidatable<ParadeplazaMessages>, ParadeplazaHtmlPath {
+abstract class ParadeplazaBaseAction : TypicalAction() // has several interfaces for direct use
+		, LaValidatable<ParadeplazaMessages>, ParadeplazaHtmlPath {
+
+	// ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    companion object {
+
+        /** The application type for HarBoR, e.g. used by access context.  */
+        protected const val APP_TYPE = "HBR" // #change_it_first
+
+        /** The user type for Member, e.g. used by access context.  */
+        protected const val USER_TYPE = "M" // #change_it_first (can delete if no isLogin)
+    }
 
     // ===================================================================================
     //                                                                           Attribute
@@ -68,12 +80,12 @@ abstract class ParadeplazaBaseAction : TypicalAction // has several interfaces f
     }
 
     // #app_customize you can customize the action hook
-    override fun hookBefore(runtime: ActionRuntime?): ActionResponse { // application may override
+    override fun hookBefore(runtime: ActionRuntime): ActionResponse { // application may override
         return super.hookBefore(runtime)
     }
 
-    override fun hookFinally(runtime: ActionRuntime?) { // application may override
-        if (runtime!!.isForwardToHtml) { // #delete_ifapi
+    override fun hookFinally(runtime: ActionRuntime) { // application may override
+        if (runtime.isForwardToHtml) { // #delete_ifapi
             runtime.registerData("headerBean", userBean.map { userBean -> HeaderBean(userBean) }.orElse(HeaderBean.empty()))
         }
         super.hookFinally(runtime)
@@ -144,18 +156,6 @@ abstract class ParadeplazaBaseAction : TypicalAction // has several interfaces f
         return ParadeplazaMessages() // overriding to change return type to concrete-class
     }
 
-    companion object {
-
-        // ===================================================================================
-        //                                                                          Definition
-        //                                                                          ==========
-        /** The application type for HarBoR, e.g. used by access context.  */
-        protected const val APP_TYPE = "HBR" // #change_it_first
-
-        /** The user type for Member, e.g. used by access context.  */
-        protected const val USER_TYPE = "M" // #change_it_first (can delete if no isLogin)
-    }
-
     // ===================================================================================
     //                                                                            Document
     //                                                                            ========
@@ -168,7 +168,7 @@ abstract class ParadeplazaBaseAction : TypicalAction // has several interfaces f
     // * o xxx() <span style="color: #3F7E5E">// xxx</span>
     // * </pre>
     // */
-    //    override fun document1_CallableSuperMethod: Unit {
-    //        super.document1_CallableSuperMethod()
-    //    }
+    //override fun document1_CallableSuperMethod: Unit {
+    //    super.document1_CallableSuperMethod()
+    //}
 }
