@@ -135,16 +135,16 @@ class NewProjectCreator(
             private var skipped: Boolean = false
 
             override fun filter(line: String): String? {
-                return if (line.startsWith("map:{")) {
-                    skipped = true
-                    line
-                } else if (line.startsWith("}")) {
-                    skipped = false
-                    line
-                } else {
-                    if (skipped) {
-                        null
-                    } else filterServiceName(line)
+                return when {
+                    line.startsWith("map:{") -> {
+                        skipped = true
+                        line
+                    }
+                    line.startsWith("}") -> {
+                        skipped = false
+                        line
+                    }
+                    else -> if (skipped) null else filterServiceName(line)
                 }
             }
         }
@@ -250,9 +250,7 @@ class NewProjectCreator(
             if (line.trim { it <= ' ' }.startsWith("direction.directCors")) {
                 return@FileTextLineFilter null
             }
-            if (line.trim { it <= ' ' }.endsWith("CorsHook;")) {
-                null
-            } else filterServiceName(line)
+            if (line.trim { it <= ' ' }.endsWith("CorsHook;")) null else filterServiceName(line)
         }
     }
 
