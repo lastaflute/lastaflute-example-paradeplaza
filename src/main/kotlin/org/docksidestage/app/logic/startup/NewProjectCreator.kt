@@ -60,9 +60,8 @@ class NewProjectCreator(
     //                              from isTargetFileOrDir()
     //                              ------------------------
     protected fun determineTarget(currentFile: File): Boolean {
-        val canonicalPath: String
-        try {
-            canonicalPath = currentFile.canonicalPath.replace("\\", "/")
+        val canonicalPath = try {
+            currentFile.canonicalPath.replace("\\", "/")
         } catch (e: IOException) {
             throw IllegalStateException("Failed to get canonical path: $currentFile")
         }
@@ -101,8 +100,7 @@ class NewProjectCreator(
             copyFile(currentFile, File(outputFile))
         } else {
             val textIO = FileTextIO().encodeAsUTF8()
-            val filtered: String?
-            filtered = when {
+            val filtered = when {
                 canonicalPath.endsWith("additionalForeignKeyMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createAdditionalForeignKeyFilter())
                 canonicalPath.endsWith("classificationDefinitionMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDefinitionFilter())
                 canonicalPath.endsWith("classificationDeploymentMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDeploymentFilter())
