@@ -41,7 +41,7 @@ class ProductDetailAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(productId: Int?): HtmlResponse {
-        val product = selectProduct(productId!!)
+        val product = selectProduct(productId)
         val bean = mappingToBean(product)
         return asHtml(ParadeplazaHtmlPath.path_Product_ProductDetailHtml).renderWith { data -> data.register("product", bean) }
     }
@@ -49,7 +49,7 @@ class ProductDetailAction : ParadeplazaBaseAction() {
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
-    private fun selectProduct(productId: Int): Product {
+    private fun selectProduct(productId: Int?): Product {
         return productBhv.selectEntity { cb ->
             cb.setupSelect_ProductCategory()
             cb.query().setProductId_Equal(productId)

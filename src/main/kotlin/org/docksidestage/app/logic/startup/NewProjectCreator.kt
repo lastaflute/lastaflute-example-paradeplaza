@@ -60,9 +60,8 @@ class NewProjectCreator(
     //                              from isTargetFileOrDir()
     //                              ------------------------
     protected fun determineTarget(currentFile: File): Boolean {
-        val canonicalPath: String
-        try {
-            canonicalPath = currentFile.canonicalPath.replace("\\", "/")
+        val canonicalPath = try {
+            currentFile.canonicalPath.replace("\\", "/")
         } catch (e: IOException) {
             throw IllegalStateException("Failed to get canonical path: $currentFile")
         }
@@ -101,8 +100,7 @@ class NewProjectCreator(
             copyFile(currentFile, File(outputFile))
         } else {
             val textIO = FileTextIO().encodeAsUTF8()
-            val filtered: String?
-            filtered = when {
+            val filtered = when {
                 canonicalPath.endsWith("additionalForeignKeyMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createAdditionalForeignKeyFilter())
                 canonicalPath.endsWith("classificationDefinitionMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDefinitionFilter())
                 canonicalPath.endsWith("classificationDeploymentMap.dfprop") -> textIO.readFilteringLine(canonicalPath, createClassificationDeploymentFilter())
@@ -137,16 +135,16 @@ class NewProjectCreator(
             private var skipped: Boolean = false
 
             override fun filter(line: String): String? {
-                return if (line.startsWith("map:{")) {
-                    skipped = true
-                    line
-                } else if (line.startsWith("}")) {
-                    skipped = false
-                    line
-                } else {
-                    if (skipped) {
-                        null
-                    } else filterServiceName(line)
+                return when {
+                    line.startsWith("map:{") -> {
+                        skipped = true
+                        line
+                    }
+                    line.startsWith("}") -> {
+                        skipped = false
+                        line
+                    }
+                    else -> if (skipped) null else filterServiceName(line)
                 }
             }
         }
@@ -252,9 +250,7 @@ class NewProjectCreator(
             if (line.trim { it <= ' ' }.startsWith("direction.directCors")) {
                 return@FileTextLineFilter null
             }
-            if (line.trim { it <= ' ' }.endsWith("CorsHook;")) {
-                null
-            } else filterServiceName(line)
+            if (line.trim { it <= ' ' }.endsWith("CorsHook;")) null else filterServiceName(line)
         }
     }
 

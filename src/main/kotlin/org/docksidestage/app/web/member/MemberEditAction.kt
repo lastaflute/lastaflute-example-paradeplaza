@@ -49,7 +49,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
 
     @Execute
     fun update(form: MemberEditForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
         verifyToken { asHtml(ParadeplazaHtmlPath.path_Error_ShowErrorsHtml) }
         val member = updateMember(form)
         return redirectById(MemberEditAction::class.java, member.memberId)
@@ -57,7 +57,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
 
     @Execute
     fun withdrawal(form: MemberEditForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
         updateMemberToWithdrawal(form)
         return redirect(MemberListAction::class.java)
     }
@@ -84,7 +84,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
         member.memberStatusCodeAsMemberStatus = form.memberStatus
         member.memberAccount = form.memberAccount
         if (member.isMemberStatusCodeFormalized) {
-            if (form.previousStatus!!.isShortOfFormalized) {
+            if (form.previousStatus?.isShortOfFormalized == true) {
                 member.formalizedDatetime = timeManager.currentDateTime()
             }
         } else if (member.isMemberStatusCode_ShortOfFormalized) {

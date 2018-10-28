@@ -18,7 +18,6 @@ package org.docksidestage.app.logic.startup
 import org.dbflute.util.Srl
 import java.io.File
 import java.io.IOException
-import java.util.*
 
 /**
  * @author jflute
@@ -46,10 +45,12 @@ class StartupLogic {
     }
 
     protected fun buildPackageName(domain: String): String { // e.g. docksidestage.org to org.docksidestage
-        val elementList = ArrayList(Arrays.asList(*domain.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()))
-        elementList.reverse()
-        val pkgName = elementList.stream().reduce { left, right -> "$left.$right" }.get()
-        return pkgName.replace("-", "") // e.g. org.dockside-stage to org.docksidestage
+        return domain
+                .split(".")
+                .dropWhile { it.isEmpty() }
+                .reversed()
+                .joinToString(separator = ".") { it }
+                .replace("-", "") // e.g. org.dockside-stage to org.docksidestage
     }
 
     private fun buildProjectDirPureName(projectDir: File): String { // e.g. /sea/mystic => mystic

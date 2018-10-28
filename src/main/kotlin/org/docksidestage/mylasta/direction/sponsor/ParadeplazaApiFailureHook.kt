@@ -25,7 +25,6 @@ import org.lastaflute.web.login.exception.LoginRequiredException
 import org.lastaflute.web.response.ApiResponse
 import org.lastaflute.web.response.JsonResponse
 import org.lastaflute.web.validation.Required
-import java.util.stream.Collectors
 import javax.servlet.http.HttpServletResponse
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
@@ -69,10 +68,7 @@ class ParadeplazaApiFailureHook : ApiFailureHook { // #change_it for handling AP
     }
 
     protected fun toErrors(propertyMessageMap: Map<String, List<String>>): List<FailureErrorPart> {
-        return propertyMessageMap.entries
-                .stream()
-                .map { entry -> FailureErrorPart(entry.key, entry.value) }
-                .collect(Collectors.toList())
+        return propertyMessageMap.entries.map { entry -> FailureErrorPart(entry.key, entry.value) }
     }
 
     protected fun asJson(result: UnifiedFailureResult): JsonResponse<UnifiedFailureResult> {

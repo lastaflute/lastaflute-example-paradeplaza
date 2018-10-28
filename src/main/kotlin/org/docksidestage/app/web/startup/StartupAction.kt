@@ -38,7 +38,7 @@ class StartupAction : ParadeplazaBaseAction() {
 
     @Execute
     fun create(form: StartupForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Startup_StartupHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Startup_StartupHtml) })
 
         val projectDir = projectDir
         startupLogic.fromParadeplaza(projectDir, form.domain!!, form.serviceName!!)

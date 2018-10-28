@@ -77,7 +77,7 @@ class SignupAction : ParadeplazaBaseAction() {
         sendSignupMail(form, token)
         return redirect(MypageAction::class.java).afterTxCommit {
             // for asynchronous DB access
-            loginAssist.identityLogin(member.memberId) { _ -> } // #simple_for_example no remember for now
+            loginAssist.identityLogin(member.memberId) {} // #simple_for_example no remember for now
         }
     }
 

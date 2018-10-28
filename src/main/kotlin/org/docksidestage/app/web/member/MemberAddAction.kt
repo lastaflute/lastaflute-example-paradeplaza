@@ -53,7 +53,7 @@ class MemberAddAction : ParadeplazaBaseAction() {
 
     @Execute
     fun register(form: MemberAddForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberAddHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Member_MemberAddHtml) })
         verifyToken { asHtml(ParadeplazaHtmlPath.path_Error_ShowErrorsHtml) }
         insertMember(form)
         return redirect(MemberListAction::class.java)

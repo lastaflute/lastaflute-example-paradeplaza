@@ -25,7 +25,6 @@ import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
-import java.util.stream.Collectors
 import javax.annotation.Resource
 
 /**
@@ -47,9 +46,9 @@ class ProductListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: ProductSearchForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
         val page = selectProductPage(pageNumber.orElse(1), form)
-        val beans = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
+        val beans = page.map { product -> mappingToBean(product) }
         return asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml).renderWith { data ->
             data.register("beans", beans)
             pagingAssist.registerPagingNavi(data, page, form)

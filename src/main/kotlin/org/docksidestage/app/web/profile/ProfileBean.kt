@@ -9,7 +9,7 @@ import java.time.LocalDateTime
  */
 class ProfileBean(member: Member) {
 
-    val memberId: Int = member.memberId!!
+    val memberId: Int = member.memberId
     val memberName: String = member.memberName
     val memberStatusName: String = member.memberStatus.get().memberStatusName
     val servicePointCount: Int?

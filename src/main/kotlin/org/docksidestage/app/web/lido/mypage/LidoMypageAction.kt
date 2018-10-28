@@ -20,7 +20,6 @@ import org.docksidestage.dbflute.exbhv.ProductBhv
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.JsonResponse
-import java.util.stream.Collectors
 import javax.annotation.Resource
 
 // the 'lido' package is example for JSON API in simple project
@@ -41,7 +40,7 @@ class LidoMypageAction : ParadeplazaBaseAction() {
             cb.query().addOrderBy_RegularPrice_Desc()
             cb.fetchFirst(3)
         }
-        val beans = memberList.stream().map { member -> MypageProductResult(member) }.collect(Collectors.toList())
+        val beans = memberList.map { member -> MypageProductResult(member) }
         return asJson(beans)
     }
 }

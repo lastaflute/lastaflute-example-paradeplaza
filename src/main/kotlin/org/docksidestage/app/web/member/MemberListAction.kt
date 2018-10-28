@@ -45,7 +45,7 @@ class MemberListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: MemberSearchForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml) })
         val page = selectMemberPage(pageNumber.orElse(1), form)
         val beans = page.mappingList { member -> mappingToBean(member) }
         return asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml).renderWith { data ->
@@ -78,9 +78,9 @@ class MemberListAction : ParadeplazaBaseAction() {
             if (form.memberStatus != null) {
                 cb.query().setMemberStatusCode_Equal_AsMemberStatus(form.memberStatus)
             }
-            if (form.formalizedFrom != null || form.formalizedTo != null) {
-                val fromTime = if (form.formalizedFrom != null) form.formalizedFrom!!.atStartOfDay() else null
-                val toTime = if (form.formalizedFrom != null) form.formalizedFrom!!.atStartOfDay() else null
+            val fromTime = form.formalizedFrom?.atStartOfDay()
+            val toTime = form.formalizedTo?.atStartOfDay()
+            if (fromTime != null || toTime != null) {
                 cb.query().setFormalizedDatetime_FromTo(fromTime, toTime) { op -> op.compareAsDate().allowOneSide() }
             }
             cb.query().addOrderBy_UpdateDatetime_Desc()
