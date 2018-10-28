@@ -49,7 +49,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
 
     @Execute
     fun update(form: MemberEditForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
+        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
         verifyToken { asHtml(ParadeplazaHtmlPath.path_Error_ShowErrorsHtml) }
         val member = updateMember(form)
         return redirectById(MemberEditAction::class.java, member.memberId)
@@ -57,7 +57,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
 
     @Execute
     fun withdrawal(form: MemberEditForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
+        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml) })
         updateMemberToWithdrawal(form)
         return redirect(MemberListAction::class.java)
     }

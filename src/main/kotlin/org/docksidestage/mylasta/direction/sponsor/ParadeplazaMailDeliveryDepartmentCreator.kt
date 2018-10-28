@@ -90,7 +90,7 @@ class ParadeplazaMailDeliveryDepartmentCreator(protected val config: Paradeplaza
             // override createConventionReceptionist() (see the method for the details)
 
             override fun createSubjectFilter(): OptionalThing<SMailSubjectFilter> {
-                return OptionalThing.of(SMailSubjectFilter { view, subject -> if (!subject.startsWith(testPrefix)) testPrefix + subject else subject })
+                return OptionalThing.of(SMailSubjectFilter { _, subject -> if (!subject.startsWith(testPrefix)) testPrefix + subject else subject })
             }
 
             override fun createAsyncStrategy(): OptionalThing<SMailAsyncStrategy> {
@@ -106,7 +106,7 @@ class ParadeplazaMailDeliveryDepartmentCreator(protected val config: Paradeplaza
             }
 
             override fun createLabelStrategy(): OptionalThing<SMailLabelStrategy> {
-                return OptionalThing.of(SMailLabelStrategy { view, locale, label -> resolveLabelIfNeeds(messageManager, locale, label) })
+                return OptionalThing.of(SMailLabelStrategy { _, locale, label -> resolveLabelIfNeeds(messageManager, locale, label) })
             }
         }
     }

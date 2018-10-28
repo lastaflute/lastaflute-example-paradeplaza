@@ -45,7 +45,7 @@ class MemberListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: MemberSearchForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml) })
+        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml) })
         val page = selectMemberPage(pageNumber.orElse(1), form)
         val beans = page.mappingList { member -> mappingToBean(member) }
         return asHtml(ParadeplazaHtmlPath.path_Member_MemberListHtml).renderWith { data ->

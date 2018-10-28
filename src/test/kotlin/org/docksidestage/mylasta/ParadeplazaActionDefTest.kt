@@ -50,7 +50,7 @@ class ParadeplazaActionDefTest : UnitParadeplazaTestCase() {
 
     @Throws(Exception::class)
     fun test_injectedResourceDefinition() {
-        policeStoryOfJavaClassChase(InjectedResourceDefinitionPolice().shouldBePrivateField { field ->
+        policeStoryOfJavaClassChase(InjectedResourceDefinitionPolice().shouldBePrivateField { _ ->
             true // means all fields
         })
     }

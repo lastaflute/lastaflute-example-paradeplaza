@@ -77,8 +77,8 @@ class LidoAuthAction : ParadeplazaBaseAction() {
     @Execute
     @AllowAnyoneAccess
     fun signin(body: SigninBody): JsonResponse<Void> {
-        validateApi(body) { messages -> }
-        loginAssist.login(UserPasswordCredential(body.account!!, body.password!!)) { op -> }
+        validateApi(body) { _ -> }
+        loginAssist.login(UserPasswordCredential(body.account!!, body.password!!)) { _ -> }
         return JsonResponse.asEmptyBody()
     }
 
@@ -95,7 +95,7 @@ class LidoAuthAction : ParadeplazaBaseAction() {
     fun signup(body: SignupBody): JsonResponse<Void> {
         validateApi(body) { messages -> moreValidate(body, messages) }
         val memberId = newMember(body)
-        loginAssist.identityLogin(memberId) { op -> } // no remember-me here
+        loginAssist.identityLogin(memberId) { _ -> } // no remember-me here
 
         val signupToken = saveSignupToken()
         sendSignupMail(body, signupToken)

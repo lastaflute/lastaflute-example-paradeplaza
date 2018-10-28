@@ -27,6 +27,8 @@ import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
 import java.util.stream.Collectors
 import javax.annotation.Resource
+import org.lastaflute.web.ruts.process.ActionRuntime
+import org.lastaflute.web.response.ActionResponse
 
 /**
  * @author jflute
@@ -47,7 +49,7 @@ class ProductListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: ProductSearchForm): HtmlResponse {
-        validate(form, { messages -> }, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
+        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
         val page = selectProductPage(pageNumber.orElse(1), form)
         val beans = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
         return asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml).renderWith { data ->
