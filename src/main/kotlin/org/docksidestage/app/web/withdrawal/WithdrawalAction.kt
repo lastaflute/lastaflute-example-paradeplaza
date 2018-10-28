@@ -52,7 +52,7 @@ class WithdrawalAction : ParadeplazaBaseAction() {
 
     @Execute
     fun done(form: WithdrawalForm): HtmlResponse {
-        validate(form, { _ -> }, { asEntryHtml() })
+        validate(form, {}, { asEntryHtml() })
         val memberId = userBean.get().memberId
         insertWithdrawal(form, memberId)
         updateStatusWithdrawal(memberId)

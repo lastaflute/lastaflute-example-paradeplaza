@@ -46,7 +46,7 @@ class ProductListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, form: ProductSearchForm): HtmlResponse {
-        validate(form, { _ -> }, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
+        validate(form, {}, { asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml) })
         val page = selectProductPage(pageNumber.orElse(1), form)
         val beans = page.map { product -> mappingToBean(product) }
         return asHtml(ParadeplazaHtmlPath.path_Product_ProductListHtml).renderWith { data ->

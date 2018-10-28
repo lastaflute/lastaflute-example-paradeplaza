@@ -53,7 +53,7 @@ class LidoProductListAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(pageNumber: OptionalThing<Int>, body: ProductSearchBody): JsonResponse<SearchPagingResult<ProductRowResult>> {
-        validateApi(body) { _ -> }
+        validateApi(body) {}
 
         val page = selectProductPage(pageNumber.orElse(1), body)
         val items = page.map { product -> mappingToBean(product) }
