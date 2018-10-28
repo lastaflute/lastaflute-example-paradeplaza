@@ -27,8 +27,6 @@ import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.HtmlResponse
 import java.util.stream.Collectors
 import javax.annotation.Resource
-import org.lastaflute.web.ruts.process.ActionRuntime
-import org.lastaflute.web.response.ActionResponse
 
 /**
  * @author jflute
