@@ -134,7 +134,7 @@ class PagingNavi(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>,
     //                                                                       =============
     protected fun assertArgumentNotNull(variableName: String?, value: Any?) {
         if (variableName == null) {
-            val msg = "The value should not be null: variableName=null value=" + value!!
+            val msg = "The value should not be null: variableName=null value=$value"
             throw IllegalArgumentException(msg)
         }
         if (value == null) {
@@ -147,8 +147,7 @@ class PagingNavi(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>,
     //                                                                      Basic Override
     //                                                                      ==============
     override fun toString(): String {
-        return ("{display=" + isDisplayPagingNavi + ", allRecordCount=" + allRecordCount + ", allPageCount=" + allPageCount
-                + ", currentPageNumber=" + currentPageNumber + "}")
+        return "{display=$isDisplayPagingNavi, allRecordCount=$allRecordCount, allPageCount=$allPageCount, currentPageNumber=$currentPageNumber}"
     }
 
     companion object {
