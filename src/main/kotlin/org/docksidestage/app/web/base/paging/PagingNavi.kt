@@ -85,17 +85,17 @@ class PagingNavi(page: PagingResultBean<*>, opLambda: Consumer<PageRangeOption>,
     protected fun buildQueryString(queryForm: Any): String {
         val beanDesc = BeanDescFactory.getBeanDesc(queryForm.javaClass)
         val propSize = beanDesc.propertyDescSize
-        val sb = StringBuilder()
-        for (i in 0 until propSize) {
-            val pd = beanDesc.getPropertyDesc(i)
-            val value = beanDesc.getPropertyDesc(i).getValue(queryForm)
-            if (value == null || value is String && value.isEmpty()) {
-                continue
+        return buildString {
+            for (i in 0 until propSize) {
+                val pd = beanDesc.getPropertyDesc(i)
+                val value = beanDesc.getPropertyDesc(i).getValue(queryForm)
+                if (value == null || value is String && value.isEmpty()) {
+                    continue
+                }
+                append(if (isEmpty()) "?" else "&")
+                append(encode(pd.propertyName)).append("=").append(encode(value.toString()))
             }
-            sb.append(if (sb.isEmpty()) "?" else "&")
-            sb.append(encode(pd.propertyName)).append("=").append(encode(value.toString()))
         }
-        return sb.toString()
     }
 
     protected fun encode(input: String): String {

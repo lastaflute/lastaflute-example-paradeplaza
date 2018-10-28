@@ -70,12 +70,12 @@ class AccessContextLogic {
                                      userBeanSupplier: UserInfoSupplier, appTypeSupplier: AppTypeSupplier, clientInfoSupplier: ClientInfoSupplier): String {
         // #change_it you can customize the user trace for common column
         // example default style: "M:7,DCK,ProductListAction,_" or "_:_,DCK,ProductListAction,_"
-        val sb = StringBuilder()
-        sb.append(userTypeSupplier.supply().orElse("_")).append(":")
-        sb.append(userBeanSupplier.supply().orElse("_"))
-        sb.append(",").append(appTypeSupplier.supply()).append(",").append(resource.moduleName)
-        sb.append(",").append(clientInfoSupplier.supply().orElse("_"))
-        val trace = sb.toString()
+        val trace = buildString {
+            append(userTypeSupplier.supply().orElse("_")).append(":")
+            append(userBeanSupplier.supply().orElse("_"))
+            append(",").append(appTypeSupplier.supply()).append(",").append(resource.moduleName)
+            append(",").append(clientInfoSupplier.supply().orElse("_"))
+        }
         val columnSize = 64 // should be less than size of trace column
         return if (trace.length > columnSize) trace.substring(0, columnSize) else trace
     }

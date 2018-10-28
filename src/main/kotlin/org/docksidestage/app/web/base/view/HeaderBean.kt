@@ -40,14 +40,14 @@ class HeaderBean { // #change_it #delete_ifapi
     }
 
     override fun toString(): String {
-        val sb = StringBuilder()
-        sb.append("{").append(memberId)
-        sb.append(",").append(memberName)
-        if (isLogin) {
-            sb.append(", isLogin")
+        return buildString {
+            append("{").append(memberId)
+            append(",").append(memberName)
+            if (isLogin) {
+                append(", isLogin")
+            }
+            append("}")
         }
-        sb.append("}")
-        return sb.toString()
     }
 
     companion object {

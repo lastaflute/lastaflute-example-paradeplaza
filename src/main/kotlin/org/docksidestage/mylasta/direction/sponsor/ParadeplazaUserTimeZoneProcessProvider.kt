@@ -45,12 +45,12 @@ class ParadeplazaUserTimeZoneProcessProvider : UserTimeZoneProcessProvider {
     }
 
     override fun toString(): String {
-        val sb = StringBuilder()
-        sb.append(DfTypeUtil.toClassTitle(this))
-        sb.append(":{useTimeZoneHandling=").append(isUseTimeZoneHandling)
-        sb.append(", acceptCookieTimeZone=").append(isAcceptCookieTimeZone)
-        sb.append("}@").append(Integer.toHexString(hashCode()))
-        return sb.toString()
+        return buildString {
+            append(DfTypeUtil.toClassTitle(this))
+            append(":{useTimeZoneHandling=").append(isUseTimeZoneHandling)
+            append(", acceptCookieTimeZone=").append(isAcceptCookieTimeZone)
+            append("}@").append(Integer.toHexString(hashCode()))
+        }
     }
 
     companion object {
