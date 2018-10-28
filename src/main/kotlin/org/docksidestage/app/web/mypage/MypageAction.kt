@@ -22,7 +22,6 @@ import org.docksidestage.dbflute.exentity.Product
 import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
-import java.util.stream.Collectors
 import javax.annotation.Resource
 
 /**
@@ -74,6 +73,6 @@ class MypageAction : ParadeplazaBaseAction() {
     //                                                                             Mapping
     //                                                                             =======
     private fun mappingToProducts(productList: List<Product>): List<MypageProductBean> {
-        return productList.stream().map { product -> MypageProductBean(product) }.collect(Collectors.toList())
+        return productList.map { product -> MypageProductBean(product) }
     }
 }

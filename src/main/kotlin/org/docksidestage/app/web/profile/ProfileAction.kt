@@ -22,7 +22,6 @@ import org.docksidestage.dbflute.exentity.Member
 import org.docksidestage.mylasta.action.ParadeplazaHtmlPath
 import org.lastaflute.web.Execute
 import org.lastaflute.web.response.HtmlResponse
-import java.util.stream.Collectors
 import javax.annotation.Resource
 
 /**
@@ -70,7 +69,7 @@ class ProfileAction : ParadeplazaBaseAction() {
     //                                                                             =======
     private fun mappingToBean(member: Member): ProfileBean {
         val bean = ProfileBean(member)
-        bean.purchaseList = member.purchaseList.stream().map { purchase -> PurchasedProductBean(purchase) }.collect(Collectors.toList())
+        bean.purchaseList = member.purchaseList.map { purchase -> PurchasedProductBean(purchase) }
         return bean
     }
 }

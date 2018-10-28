@@ -27,7 +27,6 @@ import org.lastaflute.core.util.LaStringUtil
 import org.lastaflute.web.Execute
 import org.lastaflute.web.login.AllowAnyoneAccess
 import org.lastaflute.web.response.JsonResponse
-import java.util.stream.Collectors
 import javax.annotation.Resource
 
 // the 'lido' package is example for JSON API in simple project
@@ -57,7 +56,7 @@ class LidoProductListAction : ParadeplazaBaseAction() {
         validateApi(body) { _ -> }
 
         val page = selectProductPage(pageNumber.orElse(1), body)
-        val items = page.stream().map { product -> mappingToBean(product) }.collect(Collectors.toList())
+        val items = page.map { product -> mappingToBean(product) }
 
         val result = pagingAssist.createPagingResult(page, items)
         return asJson(result)
