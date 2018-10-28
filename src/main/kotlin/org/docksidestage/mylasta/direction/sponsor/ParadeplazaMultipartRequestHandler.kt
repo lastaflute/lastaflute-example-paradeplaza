@@ -99,10 +99,6 @@ class ParadeplazaMultipartRequestHandler : MultipartRequestHandler {
 
     }
 
-    protected fun getModuleConfig(request: HttpServletRequest): ModuleConfig {
-        return request.getAttribute(LastaWebKey.MODULE_CONFIG_KEY) as ModuleConfig
-    }
-
     // ===================================================================================
     //                                                            Create ServletFileUpload
     //                                                            ========================
