@@ -41,7 +41,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
     //                                                                             Execute
     //                                                                             =======
     @Execute
-    fun index(memberId: Int?): HtmlResponse {
+    fun index(memberId: Int): HtmlResponse {
         val member = selectMember(memberId)
         saveToken()
         return asHtml(ParadeplazaHtmlPath.path_Member_MemberEditHtml).useForm(MemberEditForm::class.java) { op -> op.setup { form -> mappingToForm(member, form) } }
@@ -65,7 +65,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
-    private fun selectMember(memberId: Int?): Member {
+    private fun selectMember(memberId: Int): Member {
         return memberBhv.selectEntity { cb ->
             cb.specify().derivedMemberLogin().max({ loginCB -> loginCB.specify().columnLoginDatetime() }, Member.ALIAS_latestLoginDatetime)
             cb.query().setMemberId_Equal(memberId)
