@@ -43,14 +43,14 @@ class LidoProductDetailAction : ParadeplazaBaseAction() {
     //                                                                             =======
     @Execute
     fun index(productId: Int?): JsonResponse<ProductDetailResult> {
-        val product = selectProduct(productId!!)
+        val product = selectProduct(productId)
         return asJson(mappingToBean(product))
     }
 
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
-    private fun selectProduct(productId: Int): Product {
+    private fun selectProduct(productId: Int?): Product {
         return productBhv.selectEntity { cb ->
             cb.setupSelect_ProductCategory()
             cb.query().setProductId_Equal(productId)

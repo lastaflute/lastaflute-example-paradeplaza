@@ -30,13 +30,13 @@ class MemberPurchaseListAction : ParadeplazaBaseAction() {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private val responseManager: ResponseManager? = null
+    private lateinit var responseManager: ResponseManager
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
     @Execute
     fun index(memberId: Int?, pageNumber: Int?): HtmlResponse {
-        throw responseManager!!.new404("now making...: $memberId, $pageNumber")
+        throw responseManager.new404("now making...: $memberId, $pageNumber")
     }
 }

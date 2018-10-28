@@ -84,7 +84,7 @@ class MemberEditAction : ParadeplazaBaseAction() {
         member.memberStatusCodeAsMemberStatus = form.memberStatus
         member.memberAccount = form.memberAccount
         if (member.isMemberStatusCodeFormalized) {
-            if (form.previousStatus!!.isShortOfFormalized) {
+            if (form.previousStatus?.isShortOfFormalized == true) {
                 member.formalizedDatetime = timeManager.currentDateTime()
             }
         } else if (member.isMemberStatusCode_ShortOfFormalized) {

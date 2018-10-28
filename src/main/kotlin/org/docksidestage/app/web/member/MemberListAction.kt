@@ -78,9 +78,9 @@ class MemberListAction : ParadeplazaBaseAction() {
             if (form.memberStatus != null) {
                 cb.query().setMemberStatusCode_Equal_AsMemberStatus(form.memberStatus)
             }
-            if (form.formalizedFrom != null || form.formalizedTo != null) {
-                val fromTime = if (form.formalizedFrom != null) form.formalizedFrom!!.atStartOfDay() else null
-                val toTime = if (form.formalizedFrom != null) form.formalizedFrom!!.atStartOfDay() else null
+            val fromTime = form.formalizedFrom?.atStartOfDay()
+            val toTime = form.formalizedTo?.atStartOfDay()
+            if (fromTime != null || toTime != null) {
                 cb.query().setFormalizedDatetime_FromTo(fromTime, toTime) { op -> op.compareAsDate().allowOneSide() }
             }
             cb.query().addOrderBy_UpdateDatetime_Desc()

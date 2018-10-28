@@ -55,6 +55,6 @@ class ParadeplazaUserTimeZoneProcessProvider : UserTimeZoneProcessProvider {
 
     companion object {
 
-        val centralTimeZone = TimeZone.getDefault()!!
+        val centralTimeZone: TimeZone = TimeZone.getDefault()
     }
 }
